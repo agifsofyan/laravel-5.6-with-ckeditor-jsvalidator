@@ -17,8 +17,7 @@
 
                     <div class="blog-post">
                         <h2 class="blog-post-title">
-                            {{--  <a href="/article/{{ $post->post_slug }}">{{ $post->post_title }}</a>  --}}
-                            <a href="/diseases/{{ $post->category_slug}}/{{ $post->post_slug }}">{{ $post->post_title }}</a>
+                            <a href="/article/{{ $post->post_slug }}">{{ $post->post_title }}</a>
                         </h2>
                         <p class="blog-post-meta">{{ date('M j, Y', strtotime( $post->created_at )) }} by <a href="#">{{ $post->author_ID }}</a></p>
 

@@ -23,6 +23,7 @@ class CreatePostsTable extends Migration
             $table->string('post_type', 20);
             $table->string('post_thumbnail')->nullable();
             $table->timestamps();
+            $table->softDeletes();
         });
 
         Schema::table('posts', function(Blueprint $table) {

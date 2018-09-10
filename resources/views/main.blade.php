@@ -16,9 +16,20 @@
     {{-- Toast --}}
     @toastr_css
     <!-- Custom -->
-    <link href="{{ asset('css/style.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/style.min.css') }}" rel="stylesheet">
+    {{-- analytic google --}}
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-123742553-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-123742553-1');
+    </script>
 </head>
-<body style="left: 0; right: 0; margin-bottom: 20%; padding: 0; background-color: #54b0d5;">
+{{-- <body style="left: 0; right: 0; margin-bottom: 20%; padding: 0; background-color: #54b0d5;"> --}}
+<body style="left: 0; right: 0; padding: 0; background-color: #54b0d5;">
 
 <header>
     @include('partials._header')
@@ -34,7 +45,7 @@
 
 <!-- SCRIPTS -->
 <!-- JQuery -->
-<script type="text/javascript" src="{{asset('js/jquery-3.3.1.min.jss')}}"></script>
+<script type="text/javascript" src="{{asset('js/jquery-3.3.1.min.js')}}"></script>
 <!-- Bootstrap tooltips -->
 <script type="text/javascript" src="{{asset('js/popper.min.js')}}"></script>
 <!-- Bootstrap core JavaScript -->
@@ -53,7 +64,7 @@
 <script>
     $('#form').validator().on('submit', function (e) {
         if (e.isDefaultPrevented()) {
-          echo 'eko';
+          echo 'oke';
         } else {
           print "off"
         }
@@ -65,7 +76,29 @@
 <script src="{{asset('js/twd-menu.js')}}"></script>
 <script>
     $('.multi-item-example').carousel({
-      interval: 5000
+      interval: 4000
+    });
+</script>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#carousel-example-1z').hammer().on('swipeleft', function () {
+            $(this).carousel('next');
+        })
+        $('#carousel-example-1z').hammer().on('swiperight', function () {
+            $(this).carousel('prev');
+        })
+    });
+</script>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#multi-item-example').hammer().on('swipeleft', function () {
+            $(this).carousel('next');
+        })
+        $('#multi-item-example').hammer().on('swiperight', function () {
+            $(this).carousel('prev');
+        })
     });
 </script>
 
@@ -73,6 +106,20 @@
     function myChat() {
     window.open("https://mqa.zoosnet.net/LR/Chatpre.aspx?id=MQA87261512&lng=en" ,"_blank");
 }
+</script>
+
+<script>
+    // SideNav Button Initialization
+    $(".button-collapse").sideNav();
+    // SideNav Scrollbar Initialization
+    var sideNavScrollbar = document.querySelector('.custom-scrollbar');
+    Ps.initialize(sideNavScrollbar);
+</script>
+
+<script>
+    $(document).ready(function(){
+        $('[data-toggle="tooltip"]').tooltip();
+    });
 </script>
 
 </body>

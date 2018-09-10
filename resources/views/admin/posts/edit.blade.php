@@ -1,6 +1,6 @@
 @extends('admin.main')
 
-@section('title', '| Add New Post')
+@section('title', '| Edit Post')
 
 @section('content')
 
@@ -99,7 +99,7 @@
 
                             @if ($errors->has('post_thumbnail'))
 	                            <span class="help-block">
-	                                <strong>{{ $errors->first('post_thumbnail') }}</strong>
+	                                <small class="red-text">{{ $errors->first('post_thumbnail') }}</small>
 	                            </span>
 	                        @endif
                         </div>

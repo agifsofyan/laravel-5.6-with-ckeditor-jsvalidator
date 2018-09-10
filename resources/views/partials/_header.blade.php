@@ -1,3 +1,61 @@
+<style type="text/css">/* Chart.js */
+    @-webkit-keyframes chartjs-render-animation{from{opacity:0.99}to{opacity:1}}@keyframes chartjs-render-animation{from{opacity:0.99}to{opacity:1}}.chartjs-render-monitor{-webkit-animation:chartjs-render-animation 0.001s;animation:chartjs-render-animation 0.001s;}
+</style>
+
+    <!--Double navigation-->
+    <header>
+        <!-- Sidebar navigation -->
+        <div id="slide-out" class="side-nav fixed mdb-sidenav">
+            <div>
+                <ul class="custom-scrollbar list-unstyled" style="max-height:100vh;">
+                    <!-- Logo -->
+                    <li>
+                        <div class="logo-wrapper waves-light">
+                            <a href="/" class="mt-2"><img src="{{asset('img/logo.png')}}" class="img-fluid flex-center"></a>
+                        </div>
+                    </li>
+                    <!--/. Logo -->
+                    <!--Social-->
+                    <li>
+                        <ul class="social">
+                            <li><a href="#" class="icons-sm fb-ic"><i class="fa fa-facebook cyan-text"> </i></a></li>
+                            <li><a href="#" class="icons-sm pin-ic"><i class="fa fa-pinterest cyan-text"> </i></a></li>
+                            <li><a href="#" class="icons-sm gplus-ic"><i class="fa fa-google-plus cyan-text"> </i></a></li>
+                            <li><a href="#" class="icons-sm tw-ic"><i class="fa fa-twitter cyan-text"> </i></a></li>
+                        </ul>
+                    </li>
+                    <!--/Social-->
+                    <!--Search Form-->
+                    <li>
+                        <form class="search-form cyan" style="opacity: 0.6;" role="search" action="/searching/" method="GET">
+                            <div class="form-group md-form mt-0 pt-1 waves-light">
+                                <input class="form-control" type="text" name="su" value="{{ Request::query('su') }}" placeholder="Enter For Search" aria-label="Search" style="color: black !important; font-weight: bold;">
+                            </div>
+                        </form>
+                    </li>
+                    <!--/.Search Form-->
+                    <!-- Side navigation links -->
+                    <li>
+                        <ul class="collapsible collapsible-accordion">
+                            @if( Helper::get_categories() )
+                                @foreach( Helper::get_categories() as $cat )
+                                    <li class="list-cat">
+                                        <a class="collapsible-header waves-effect arrow-r" href="/diseases/{{ $cat->category_slug}}"><i class="fa fa-tag"></i> {{ $cat->category_name }}
+                                        </a>
+                                    </li>
+                                @endforeach
+                            @endif
+                        </ul>
+                    </li>
+                    <!--/. Side navigation links -->
+                </ul>
+                <div class="sidenav-bg mask-strong"></div>
+            </div>
+        </div>
+        <!--/. Sidebar navigation -->
+        <!-- Navbar -->
+    </header>
+
     <nav class="container-fluid text-center white-text" style="background-color: lightskyblue;;">
         <div class="row">
             <div class="col-4 top-info">
@@ -32,114 +90,30 @@
     </div>
 
     <!--Navbar-->
-    <nav id="navbar" class="navbar navbar-expand-lg navbar-dark mb-1 info-color fix-nav">
+    <nav id="navbar" class="navbar navbar-toggleable-md navbar-expand-lg scrolling-navbar double-nav navbar-expand-lg navbar-dark mb-1 info-color fix-nav pl-3">
+        {{-- <div class="float-left">
+            <a href="#" data-activates="slide-out" class="button-collapse"><i class="fa fa-bars"></i></a>
+        </div> --}}
 
+        <li class="nav-item waves-effect home"><a href="/" class=" nav-link {{ null == Request::query() ? 'active' : '' }}">| <i class="fa fa-home fa-2x" aria-hidden="true"></i> | </a>
+            <figcaption></figcaption>
+        </li>
+        <li class="nav-item waves-effect button-collapse" data-activates="slide-out" style="list-style: none;"><a href="#" class="nav-link">Diseases</a></li>
         <!-- Navbar brand -->
-        <a class="navbar-brand" style="line-height: 40px;" href="/">Klinik Sentosa</a>
-
-        <!-- Collapse button -->
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#basicExampleNav" aria-controls="basicExampleNav"
-            aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-
-        <!-- Collapsible content -->
-        <div class="collapse navbar-collapse" id="basicExampleNav">
-
-            <!-- Links -->
-            <ul class="navbar-nav mr-auto">
-
-                <!-- Dropdown -->
-                <li class="nav-item dropdown mega-dropdown">
-                    <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Disease</a>
-                    <div class="dropdown-menu dropdown-primary mega-menu v-2 row z-depth-1 special-color" aria-labelledby="navbarDropdownMenuLink">
-                        <div class="row mx-md-4 mx-1">
-                            <div class="col-6 sub-menu">
-                                <ul class="caret-style pl-0">
-                                    @if( Helper::get_categories_left() )
-                                        @foreach( Helper::get_categories_left() as $cat )
-                                            <li class="{{ $cat->category_slug == Request::query('category_slug') ? 'active' : '' }}"><a class="menu-item mb-0 waves-effect" href="/diseases/{{ $cat->category_slug}}">{{ $cat->category_name }}</a></li>
-                                        @endforeach
-                                    @endif
-                                </ul>
-                            </div>
-                            <div class="col-6 sub-menu">
-                                <ul class="caret-style pl-0">
-                                    @if( Helper::get_categories_right() )
-                                        @foreach( Helper::get_categories_right() as $cat )
-                                            <li class="{{ $cat->category_slug == Request::query('category_slug') ? 'active' : '' }}"><a class="menu-item mb-0 waves-effect" href="/diseases/{{ $cat->category_slug}}">{{ $cat->category_name }}</a></li>
-                                        @endforeach
-                                    @endif
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </li>
-
-                @if( Helper::get_pages() )
-                    @foreach( Helper::get_pages() as $page )
-                        {{-- <li class="nav-item {{ Request::query('page','slug') ? 'active' : '' }}"><a class="nav-link" href="/page/{{ $page->slug}}">{{ $page->title }}</a></li> --}}
-                        <li class="nav-item"><a class="nav-link" href="/page/{{ $page->slug}}">{{ $page->title }}</a></li>
-                    @endforeach
-                @endif
-            </ul>
-
-            <!-- Search -->
-            <form class="form-inline active-cyan-4" action="/searching/" method="GET">
-                <input class="form-control form-control-sm mr-3 w-75" type="text" name="su" value="{{ Request::query('su') }}" placeholder="Enter For Search" aria-label="Search">
+        @if( Helper::get_pages() )
+            @foreach( Helper::get_pages() as $page )
+                {{-- <li class="nav-item {{ Request::query('page','slug') ? 'active' : '' }}"><a class="nav-link" href="/page/{{ $page->slug}}">{{ $page->title }}</a></li> --}}
+                <li class="nav-item waves-effect" style="list-style: none;"><a class="nav-link {{ $page->id == Request::query('page_id') ? 'active' : '' }}" href="/pages/{{ $page->slug}}">{{ $page->title }}</a></li>
+            @endforeach
+        @endif
+        <form class="breadcrumb-dn ml-auto d-none d-lg-block form-inline active-cyan-4" action="/searching/" method="GET">
+            <input class="form-control form-control-sm mr-3 w-75" type="text" name="su" value="{{ Request::query('su') }}" placeholder="Enter For Search" aria-label="Search">
                 {{--  <a style="border: 1px solid white; padding: 1px 4px; border-radius: 5px;"><i class="fa fa-search white-text" aria-hidden="true"></i></a>  --}}
                 {{-- <button type="submit" class="btn btn-info btn-sm">Search</button> --}}
-            </form>
-        </div>
-        <!-- Collapsible content -->
-
+        </form>
     </nav>
     <!--/.Navbar-->
 
-{{-- Style for mega-dropdown --}}
-<style>
-    .navbar .mega-dropdown {
-        position: static !important; }
-
-      .navbar .dropdown-menu.mega-menu {
-        width: 100%;
-        border: none;
-        border-radius: 0; }
-        .navbar .dropdown-menu.mega-menu.v-2 a {
-          padding: 15px 10px 10px 35px; }
-          .navbar .dropdown-menu.mega-menu.v-2 a.news-title-2 {
-            font-weight: 500;
-            font-size: 1.1rem;
-            line-height: 1.5;
-            -webkit-transition: .2s;
-            transition: .2s;
-            color: #fff !important; }
-            .navbar .dropdown-menu.mega-menu.v-2 a.news-title-2:hover {
-              color: #d0d6e2 !important; }
-        .navbar .dropdown-menu.mega-menu.v-2 .sub-menu ul {
-          list-style: none; }
-          .navbar .dropdown-menu.mega-menu.v-2 .sub-menu ul.caret-style li {
-            -webkit-transition: .3s;
-            transition: .3s; }
-            .navbar .dropdown-menu.mega-menu.v-2 .sub-menu ul.caret-style li:hover {
-              background-color: rgba(0, 0, 0, 0.2);
-              -webkit-transition: .3s;
-              transition: .3s; }
-            .navbar .dropdown-menu.mega-menu.v-2 .sub-menu ul.caret-style li a:after {
-              font-family: "fontAwesome";
-              content: '\f0da';
-              position: absolute;
-              left: 0.5rem;
-              font-size: 12px;
-              top: 1rem; }
-        .navbar .dropdown-menu.mega-menu.v-2 .sub-menu a.menu-item {
-          color: #fff !important; }
-          .navbar .dropdown-menu.mega-menu.v-2 .sub-menu a.menu-item:hover {
-            color: #fff !important; }
-        .navbar .dropdown-menu.mega-menu.v-2 .sub-title {
-          padding-bottom: 1rem;
-          margin-bottom: 1rem;
-          border-bottom: 1px solid; }
-        .navbar .dropdown-menu.mega-menu.v-2 .font-small {
-          font-size: 0.85rem; }
-</style>
+<script>
+    $(".button-collapse").sideNav();
+</script>

@@ -26,7 +26,7 @@
 
                             <div class="blog-content">
                                 {{--If post content is > 200 in characters display 200 only or else display the whole content--}}
-                                {{ strlen( $post->post_content ) > 200 ? substr( $post->post_content, 0, 200) . ' ...' : $post->post_content }}
+                                {!! Helper::words($post->post_content, 70,'....')  !!}
                                 <a href="/diseases/{{ $post->category_slug}}/{{ $post->post_slug }}" class="btn btn-outline-info btn-sm">Preview as user</a>
                                 <br><hr>
                             </div>

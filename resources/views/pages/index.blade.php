@@ -4,6 +4,8 @@
 
     @include('alert.flash-message')
 
+    <link href="{{ asset('css/hover-button.css') }}" rel="stylesheet">
+
     {{--  <main class="white">  --}}
         <!-- carousel -->
         <!--Carousel Wrapper-->
@@ -19,17 +21,17 @@
             <div class="carousel-inner" role="listbox">
                 <!--First slide-->
                 <div class="carousel-item active">
-                    <img class="d-block w-100" src="{{asset('img/slider/Slide-1.jpg')}}" alt="First slide">
+                    <img class="d-block w-100" src="{{asset('img/slider/slideshow-1.jpg')}}" alt="First slide Klinik Sentosa">
                 </div>
                 <!--/First slide-->
                 <!--Second slide-->
                 <div class="carousel-item">
-                    <img class="d-block w-100" src="https://mdbootstrap.com/img/Photos/Slides/img%20(129).jpg" alt="Second slide">
+                    <img class="d-block w-100" src="{{asset('img/slider/slideshow-2.jpg')}}" alt="Second slide Klinik Sentosa">
                 </div>
                 <!--/Second slide-->
                 <!--Third slide-->
                 <div class="carousel-item">
-                    <img class="d-block w-100" src="https://mdbootstrap.com/img/Photos/Slides/img%20(70).jpg" alt="Third slide">
+                    <img class="d-block w-100" src="{{asset('img/slider/slideshow-3.jpg')}}" alt="Third slide Klinik Sentosa">
                 </div>
                 <!--/Third slide-->
             </div>
@@ -48,36 +50,47 @@
         <!--/.Carousel Wrapper-->
 
         <div class="container-fluid">
-            <div class="row" style="margin-top: 30px;">
-                <div class="col-4 text-center" style="padding-top: 20px;">
-                    <hr style="background-color: lightskyblue; height: 3px;">
-                    <!-- Title -->
-                    <h4 class="h4-responsive font-weight-bold"><strong>Jam Buka</strong></h4>
-                    <i style="color: cornflowerblue;" class="fa fa-hand-o-down" aria-hidden="true"></i>
-                    <h5 style="color: cornflowerblue" class="h5-responsive"><strong>Setiap Hari</strong></h5>
-                    <!-- Text -->
-                    <h5 class="h5-responsive font-weight-bold">09.00 - 21.00 wib</h5>
-                    <p class="text-fluid">Hari libur tetap buka</p>
-                </div>
-                <div class="col-4 text-center" style="padding-top: 20px;">
-                    <hr style="background-color: lightskyblue; height: 3px;">
-                    <!-- Title -->
-                    <h4 class="h4-responsive font-weight-bold"><strong>Reservasi Online</strong></h4>
-                    <br>
-                    <a href="#" style="border: 1px solid cornflowerblue; padding: 5px; border-radius:  5px;">Daftarkan</a>
-                    <hr>
-                    <!-- Text -->
-                    <p class="text-fluid">Setelah reservasi terkirim kami akan menghubungi anda dalam waktu 1x24 jam</p>
-                </div>
-                <div class="col-4 text-center" style="padding-top: 20px;">
-                    <hr style="background-color: lightskyblue; height: 3px;">
-                    <h4 class="h4-responsive font-weight-bold"><strong>Hubungi Kami</strong></h4>
-                    <!-- Subtitle -->
-                    <i class="fa fa-phone-square fa-2x" style="color: lightskyblue" aria-hidden="true"></i>
-                    <p class="text-fluid font-weight-bold">081362621616</p>
-                    <!-- Text -->
-                    <p class="text-fluid">Jika ada keluhan silahkan hubungi kami</p>
-                </div>
+            <div class="row">
+                <ul class="col-4 animate ca-menu pl-2 pr-1">
+                    <li>
+                        <a href="#" class="text-center">
+                            <hr style="background-color: lightskyblue; height: 3px;">
+                            <div class="ca-conten">
+                                <h4 class="h4-responsive font-weight-bold ca-main"><strong>Jam Buka</strong></h4>
+                                <span class="ca-icon">&#80;</span>
+                                <h5 style="color: cornflowerblue" class="h5-responsive"><strong>Setiap Hari</strong></h5>
+                                <h5 class="h5-responsive orange-text text-fluid ca-sub">09.00 - 21.00 wib</h5>
+                                <p class="text-fluid ca-sub">Hari libur tetap buka</p>
+                            </div>
+                        </a>
+                    </li>
+                </ul>
+                <ul class="col-4 ca-menu pl-1 pr-1">
+                    <li>
+                        <a href="#" class="text-center">
+                            <hr style="background-color: lightskyblue; height: 3px;">
+                            <div class="ca-conten">
+                                <h4 class="h4-responsive font-weight-bold ca-main"><strong>Reservasi Online</strong></h4>
+                                {{-- <a href="/chat" style="border: 1px solid cornflowerblue; padding: 5px; border-radius:  5px;">Daftarkan</a> --}}
+                                <button onclick="myChat()" type="button" class="btn btn-outline-info btn-sm waves-effect">Info</button>
+                                <p class="text-fluid ca-sub">Setelah reservasi terkirim kami akan menghubungi anda dalam waktu 1x24 jam</p>
+                            </div>
+                        </a>
+                    </li>
+                </ul>
+                <ul class="col-4 animate ca-menu pl-1 pr-2">
+                    <li>
+                        <a href="#" class="text-center">
+                            <hr style="background-color: lightskyblue; height: 3px;">
+                            <div class="ca-conten">
+                                <h4 class="h4-responsive font-weight-bold ca-main"><strong>Hubungi Kami</strong></h4>
+                                <i class="fa fa-phone-square fa-2x" style="color: lightskyblue" aria-hidden="true"></i>
+                                <p class="text-fluid orange-text ca-sub">081362621616</p>
+                                <p class="text-fluid ca-sub">Jika ada keluhan silahkan hubungi kami</p>
+                                </a>
+                            </div>
+                    </li>
+                </ul>
             </div>
         </div>
 
@@ -86,7 +99,7 @@
         </div>
         <div class="container-fluid" style="background-color: lightskyblue; margin-top: -10px;">
             <div class="row">
-                    <div class="col-5 unlist" style="padding: 20px;">
+                    <div class="col-4 unlist">
 
                         @if( Helper::get_categories_left() )
                             @foreach( Helper::get_categories_left() as $cat )
@@ -95,202 +108,224 @@
                         @endif
 
                     </div>
-                    <div class="col-4 unlist" style="padding: 20px;">
+                    <div class="col-4 unlist">
                         @if( Helper::get_categories_right() )
                             @foreach( Helper::get_categories_right() as $cat )
-                                <li class="nav-item {{ $cat->category_slug == Request::query('category_slug') ? 'active' : '' }}"><a class="nav-link" href="/diseases/{{ $cat->category_slug}}">{{ $cat->category_name }}</a></li>
+                                <li class="nav-item {{ $cat->category_slug == Request::query('category_slug') ? 'active' : '' }}"><a class="nav-link waves-effect deas" href="/diseases/{{ $cat->category_slug}}">{{ $cat->category_name }}</a></li>
                             @endforeach
                         @endif
                     </div>
-                    <div class="col-3 unlist text-center" style="background: #54b0d5; padding: 20px;">
-                        <!-- <ul> -->
-                            <li><a href="#"><img src="{{asset('img/Konsultasi-online-side.png')}}" alt="" class="img-fluid"></a></li><br>
-                            <li><a href="/chat"><img src="{{asset('img/ink.png')}}" alt="" class="img-fluid"></a></li>
-                        <!-- </ul> -->
+                    {{-- <div class="col-4 unlist text-center" style="background: #54b0d5; background-image: url('/img/consultation.png'); background-repeat: no-repeat; background-size: 150%; background-position: center; cursor: pointer;" onclick="myChat()"> --}}
+                    <div class="col-4 unlist text-center" style="background: #54b0d5;">
+                        <a href="/chat"><img style="margin-top: 20px;" src="{{asset('img/Konsultasi-online-side.png')}}" alt="Klinik Sentosa" class="img-fluid"></a><br><br>
+                        <a href="/chat"><img src="{{asset('img/ink.png')}}" alt="Klinik Sentosa" class="img-fluid"></a>
+
+                        <p class="text-fluid white-text mt-4" onclick="myChat()">Konsultasikan kepada kami</p>
                     </div>
             </div>
         </div>
 
-        <br><br>
+        {{-- <br><br> --}}
 
-        <div class="panel" style="background-color: gold; height: 40px; padding-left: 20px;">
-            <h4 class="font-weight-bold h5-responsive" style="line-height: 40px;">TESIMONIALS</h4>
+        {{-- <div class="panel" style="background-color: gold; height: 40px; padding-left: 20px;">
+            <h4 class="font-weight-bold h5-responsive" style="line-height: 40px;">TESTIMONIALS</h4>
         </div>
 
         <br><br>
 
-        <!-- Carousel 2 -->
         <section>
-        <!--Carousel Wrapper-->
         <div id="multi-item-example" class="carousel slide carousel-multi-item multi-item-example" data-ride="carousel">
-
-            <!--Controls-->
-            <!-- <div class="controls-top">
-                <a class="btn-floating waves-effect waves-light" href="#multi-item-example" data-slide="prev"><i class="fa fa-chevron-left"></i></a>
-                <a class="btn-floating waves-effect waves-light" href="#multi-item-example" data-slide="next"><i class="fa fa-chevron-right"></i></a>
-            </div> -->
-            <!--/.Controls-->
-
-            <!--Indicators-->
-            <ol class="carousel-indicators carousel-indicators-2" style="margin-bottom: -10px;">
-                <li style="border: 1px solid slategrey;" data-target="#multi-item-example" data-slide-to="0" class="active"></li>
-                <li style="border: 1px solid slategrey;" data-target="#multi-item-example" data-slide-to="1" ></li>
-                <li style="border: 1px solid slategrey;" data-target="#multi-item-example" data-slide-to="2"></li>
+            <ol class="carousel-indicators carousel-indicators-2">
+                <li style="opacity: 0.3; filter: alpha(opacity=40);" data-target="#multi-item-example" data-slide-to="0"></li>
+                <li style="opacity: 0.3; filter: alpha(opacity=40);" data-target="#multi-item-example" data-slide-to="1" class="active"></li>
+                <li style="opacity: 0.3; filter: alpha(opacity=40);" data-target="#multi-item-example" data-slide-to="2"></li>
             </ol>
-            <!--/.Indicators-->
-
-            <!--Slides-->
             <div class="carousel-inner" role="listbox">
-
-                <!--First slide-->
                 <div class="carousel-item">
-
                     <div class="row">
                         <div class="col-6">
-                            <div class="card" style="padding-left: 20px;">
-                                <div class="card-header white-text" style="background-color: lightskyblue; border-radius: 10px;">
+                            <div class="z-depth-1" style="border: 1px solid lightskyblue; margin-left: 25px; border-radius: 10px; margin-bottom: 20px;">
+                                <div class="card-header white-text" style="background-color: lightskyblue; border-top-left-radius: 10px; border-top-right-radius: 10px;">
                                     Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima, nam officia ut modi distinctio, tempore repellat quibusdam perspiciatis laboriosam voluptas quaerat quasi asperiores, natus eaque aut adipisci quas fuga dolor.
                                 </div>
-                                <div class="card-body" style="padding: 20px;">
-                                    <img src="{{asset('img/user-mate.png')}}" style="width: 20%;" class="img-fluid" alt="">
-                                    <!-- <h4 class="card-title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Judul kartu</font></font></h4>
-                                    <p class="card-text"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Beberapa contoh teks cepat untuk membangun pada judul kartu dan membuat sebagian besar konten kartu.</font></font></p>
-                                    <a class="btn btn-primary waves-effect waves-light"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Tombol</font></font></a> -->
+                                <div class="row" style="margin: 5px;">
+                                    <div class="col-5">
+                                        <div class="text-right">
+                                            <img src="{{asset('img/user-mate.png')}}" class="img-fluid" alt="KLinik Sentosa">
+                                        </div>
+                                    </div>
 
-                                    <div class="float-right" style="margin-top: 10px;">
-                                        <p class="text-fluid">Unknowns</p>
-                                        <p class="text-fluid">28 tahun</p>
+                                    <div class="col-6 text-left d-flex justify-content-end">
+                                        <table height="100%">
+                                            <tbody>
+                                                <tr>
+                                                    <td class="align-middle">Unknowns</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="align-middle">28 tahun</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
                                     </div>
                                 </div>
                             </div>
                         </div>
 
                         <div class="col-6">
-                            <div class="card" style="padding-right: 20px;">
-                                <div class="card-header white-text" style="background-color: lightskyblue; border-radius: 10px;">
+                            <div class="z-depth-1" style="border: 1px solid lightskyblue; margin-right: 25px; border-radius: 10px; margin-bottom: 20px;">
+                                <div class="card-header white-text" style="background-color: lightskyblue; border-top-left-radius: 10px; border-top-right-radius: 10px;">
                                     Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima, nam officia ut modi distinctio, tempore repellat quibusdam perspiciatis laboriosam voluptas quaerat quasi asperiores, natus eaque aut adipisci quas fuga dolor.
                                 </div>
-                                <div class="card-body" style="padding: 20px;">
-                                    <img src="{{asset('img/user-mate.png')}}" style="width: 20%;" class="img-fluid" alt="">
-                                    <!-- <h4 class="card-title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Judul kartu</font></font></h4>
-                                    <p class="card-text"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Beberapa contoh teks cepat untuk membangun pada judul kartu dan membuat sebagian besar konten kartu.</font></font></p>
-                                    <a class="btn btn-primary waves-effect waves-light"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Tombol</font></font></a> -->
+                                <div class="row" style="margin: 5px;">
+                                    <div class="col-5">
+                                        <div class="text-right">
+                                            <img src="{{asset('img/user-mate.png')}}" class="img-fluid" alt="KLinik Sentosa">
+                                        </div>
+                                    </div>
 
-                                    <div class="float-right" style="margin-top: 10px;">
-                                        <p class="text-fluid">Unknowns</p>
-                                        <p class="text-fluid">28 tahun</p>
+                                    <div class="col-6 text-left d-flex justify-content-end">
+                                        <table height="100%">
+                                            <tbody>
+                                                <tr>
+                                                    <td class="align-middle">Unknowns</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="align-middle">28 tahun</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-
                 </div>
-                <!--/.First slide-->
 
-                <!--Second slide-->
                 <div class="carousel-item active carousel-item-left">
-
-                    <div class="row">
+                     <div class="row">
                         <div class="col-6">
-                            <div class="card" style="padding-left: 20px;">
-                                <div class="card-header white-text" style="background-color: lightskyblue; border-radius: 10px;">
+                            <div class="z-depth-1" style="border: 1px solid lightskyblue; margin-left: 25px; border-radius: 10px; margin-bottom: 20px;">
+                                <div class="card-header white-text" style="background-color: lightskyblue; border-top-left-radius: 10px; border-top-right-radius: 10px;">
                                     Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima, nam officia ut modi distinctio, tempore repellat quibusdam perspiciatis laboriosam voluptas quaerat quasi asperiores, natus eaque aut adipisci quas fuga dolor.
                                 </div>
-                                <div class="card-body" style="padding: 20px;">
-                                    <img src="{{asset('img/user-mate.png')}}" style="width: 20%;" class="img-fluid" alt="">
-                                    <!-- <h4 class="card-title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Judul kartu</font></font></h4>
-                                    <p class="card-text"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Beberapa contoh teks cepat untuk membangun pada judul kartu dan membuat sebagian besar konten kartu.</font></font></p>
-                                    <a class="btn btn-primary waves-effect waves-light"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Tombol</font></font></a> -->
+                                <div class="row" style="margin: 5px;">
+                                    <div class="col-5">
+                                        <div class="text-right">
+                                            <img src="{{asset('img/user-mate.png')}}" class="img-fluid" alt="KLinik Sentosa">
+                                        </div>
+                                    </div>
 
-                                    <div class="float-right" style="margin-top: 10px;">
-                                        <p class="text-fluid">Unknowns</p>
-                                        <p class="text-fluid">28 tahun</p>
+                                    <div class="col-6 text-left d-flex justify-content-end">
+                                        <table height="100%">
+                                            <tbody>
+                                                <tr>
+                                                    <td class="align-middle">Unknowns</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="align-middle">28 tahun</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
                                     </div>
                                 </div>
                             </div>
                         </div>
 
                         <div class="col-6">
-                            <div class="card" style="padding-right: 20px;">
-                                <div class="card-header white-text" style="background-color: lightskyblue; border-radius: 10px;">
+                            <div class="z-depth-1" style="border: 1px solid lightskyblue; margin-right: 25px; border-radius: 10px; margin-bottom: 20px;">
+                                <div class="card-header white-text" style="background-color: lightskyblue; border-top-left-radius: 10px; border-top-right-radius: 10px;">
                                     Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima, nam officia ut modi distinctio, tempore repellat quibusdam perspiciatis laboriosam voluptas quaerat quasi asperiores, natus eaque aut adipisci quas fuga dolor.
                                 </div>
-                                <div class="card-body" style="padding: 20px;">
-                                    <img src="{{asset('img/user-mate.png')}}" style="width: 20%;" class="img-fluid" alt="">
-                                    <!-- <h4 class="card-title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Judul kartu</font></font></h4>
-                                    <p class="card-text"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Beberapa contoh teks cepat untuk membangun pada judul kartu dan membuat sebagian besar konten kartu.</font></font></p>
-                                    <a class="btn btn-primary waves-effect waves-light"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Tombol</font></font></a> -->
+                                <div class="row" style="margin: 5px;">
+                                    <div class="col-5">
+                                        <div class="text-right">
+                                            <img src="{{asset('img/user-mate.png')}}" class="img-fluid" alt="KLinik Sentosa">
+                                        </div>
+                                    </div>
 
-                                    <div class="float-right" style="margin-top: 10px;">
-                                        <p class="text-fluid">Unknowns</p>
-                                        <p class="text-fluid">28 tahun</p>
+                                    <div class="col-6 text-left d-flex justify-content-end">
+                                        <table height="100%">
+                                            <tbody>
+                                                <tr>
+                                                    <td class="align-middle">Unknowns</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="align-middle">28 tahun</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-
                 </div>
-                <!--/.Second slide-->
 
-                <!--Third slide-->
                 <div class="carousel-item carousel-item-next carousel-item-left">
-
-                    <div class="row">
+                     <div class="row">
                         <div class="col-6">
-                            <div class="card" style="padding-left: 20px;">
-                                <div class="card-header white-text" style="background-color: lightskyblue; border-radius: 10px;">
+                            <div class="z-depth-1" style="border: 1px solid lightskyblue; margin-left: 25px; border-radius: 10px; margin-bottom: 20px;">
+                                <div class="card-header white-text" style="background-color: lightskyblue; border-top-left-radius: 10px; border-top-right-radius: 10px;">
                                     Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima, nam officia ut modi distinctio, tempore repellat quibusdam perspiciatis laboriosam voluptas quaerat quasi asperiores, natus eaque aut adipisci quas fuga dolor.
                                 </div>
-                                <div class="card-body" style="padding: 20px;">
-                                    <img src="{{asset('img/user-mate.png')}}" style="width: 20%;" class="img-fluid" alt="">
-                                    <!-- <h4 class="card-title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Judul kartu</font></font></h4>
-                                    <p class="card-text"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Beberapa contoh teks cepat untuk membangun pada judul kartu dan membuat sebagian besar konten kartu.</font></font></p>
-                                    <a class="btn btn-primary waves-effect waves-light"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Tombol</font></font></a> -->
+                                <div class="row" style="margin: 5px;">
+                                    <div class="col-5">
+                                        <div class="text-right">
+                                            <img src="{{asset('img/user-mate.png')}}" class="img-fluid" alt="KLinik Sentosa">
+                                        </div>
+                                    </div>
 
-                                    <div class="float-right" style="margin-top: 10px;">
-                                        <p class="text-fluid">Unknowns</p>
-                                        <p class="text-fluid">28 tahun</p>
+                                    <div class="col-6 text-left d-flex justify-content-end">
+                                        <table height="100%">
+                                            <tbody>
+                                                <tr>
+                                                    <td class="align-middle">Unknowns</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="align-middle">28 tahun</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
                                     </div>
                                 </div>
                             </div>
                         </div>
 
                         <div class="col-6">
-                            <div class="card" style="padding-right: 20px;">
-                                <div class="card-header white-text" style="background-color: lightskyblue; border-radius: 10px;">
+                            <div class="z-depth-1" style="border: 1px solid lightskyblue; margin-right: 25px; border-radius: 10px; margin-bottom: 20px;">
+                                <div class="card-header white-text" style="background-color: lightskyblue; border-top-left-radius: 10px; border-top-right-radius: 10px;">
                                     Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima, nam officia ut modi distinctio, tempore repellat quibusdam perspiciatis laboriosam voluptas quaerat quasi asperiores, natus eaque aut adipisci quas fuga dolor.
                                 </div>
-                                <div class="card-body" style="padding: 20px;">
-                                    <img src="{{asset('img/user-mate.png')}}" style="width: 20%;" class="img-fluid" alt="">
-                                    <!-- <h4 class="card-title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Judul kartu</font></font></h4>
-                                    <p class="card-text"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Beberapa contoh teks cepat untuk membangun pada judul kartu dan membuat sebagian besar konten kartu.</font></font></p>
-                                    <a class="btn btn-primary waves-effect waves-light"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Tombol</font></font></a> -->
+                                <div class="row" style="margin: 5px;">
+                                    <div class="col-5">
+                                        <div class="text-right">
+                                            <img src="{{asset('img/user-mate.png')}}" class="img-fluid" alt="KLinik Sentosa">
+                                        </div>
+                                    </div>
 
-                                    <div class="float-right" style="margin-top: 10px;">
-                                        <p class="text-fluid">Unknowns</p>
-                                        <p class="text-fluid">28 tahun</p>
+                                    <div class="col-6 text-left d-flex justify-content-end">
+                                        <table height="100%">
+                                            <tbody>
+                                                <tr>
+                                                    <td class="align-middle">Unknowns</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="align-middle">28 tahun</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-
                 </div>
-                <!--/.Third slide-->
-
             </div>
-            <!--/.Slides-->
-
         </div>
-        <!--/.Carousel Wrapper-->
+        </section> --}}
 
-        </section>
-        <!-- End Carousel 2 -->
-
-        <div class="container-fluid" style="padding: 30px 10px;">
-            <a href="#"><img src="{{asset('img/Bottom-banner.jpg')}}" style="width: 100%;"></a>
+        <div style="margin-top: 30px">
+            <a href="/chat"><img src="{{asset('img/Bottom-banner.jpg')}}" class="img-fluid" alt="Klinik Sentosa" style="width: 100%;"></a>
         </div>
         <br>
         <!-- form consultation -->
@@ -298,7 +333,7 @@
             <div class="card" style="box-shadow: 1px 1px 10px silver, 0 0 50px silver, 0 0 10px white;">
                 <div class="card-header"><h4 class="h4-responsive font-weight-bold text-center" style="color: #33b5e5;">Reservasi Online</h4></div>
                 <div class="card-body">
-                    <form action="{{ route('reservations.store') }}" method="POST" id="save-user" class="needs-validation" novalidate>
+                    <form action="{{ route('home.save_data') }}" method="POST" id="save-user" class="needs-validation" novalidate>
                         {{ csrf_field() }}
                         <!-- Grid row 1 -->
                         <div class="form-row">
@@ -376,7 +411,7 @@
                         <!-- Grid row 3 -->
 
                         <div class="text-center mt-4">
-                            <input type="submit" class="btn btn-info btn-rounded" value="Kirim Reservasi" style="border-radius: 10px;" />
+                            <input type="submit" class="btn btn-info btn-rounded effect effect-5" value="Kirim Reservasi" />
                         </div>
                     </form>
                 </div>
@@ -398,5 +433,97 @@
         </div>
         <br><br>
     {{--  </main>  --}}
+
+<!-- Sidebar navigation -->
+<div id="slide-out" class="side-nav fixed">
+  <ul class="custom-scrollbar">
+      <!-- Logo -->
+      <li>
+          <div class="logo-wrapper waves-light">
+              <a href="#"><img src="{{ asset('img/logo.png') }}" class="img-fluid flex-center"></a>
+          </div>
+      </li>
+      <!--/. Logo -->
+      <!--Social-->
+      <li>
+          <ul class="social">
+              <li><a href="#" class="icons-sm fb-ic"><i class="fa fa-facebook"> </i></a></li>
+              <li><a href="#" class="icons-sm pin-ic"><i class="fa fa-pinterest"> </i></a></li>
+              <li><a href="#" class="icons-sm gplus-ic"><i class="fa fa-google-plus"> </i></a></li>
+              <li><a href="#" class="icons-sm tw-ic"><i class="fa fa-twitter"> </i></a></li>
+          </ul>
+      </li>
+      <!--/Social-->
+      <!--Search Form-->
+      <li>
+          <form class="search-form" role="search">
+              <div class="form-group md-form mt-0 pt-1 waves-light">
+                  <input type="text" class="form-control" placeholder="Search">
+              </div>
+          </form>
+      </li>
+      <!--/.Search Form-->
+      <!-- Side navigation links -->
+      <li>
+          <ul class="collapsible collapsible-accordion">
+              <li><a class="collapsible-header waves-effect arrow-r"><i class="fa fa-chevron-right"></i> Submit blog<i class="fa fa-angle-down rotate-icon"></i></a>
+                  <div class="collapsible-body">
+                      <ul>
+                          <li><a href="#" class="waves-effect">Submit listing</a>
+                          </li>
+                          <li><a href="#" class="waves-effect">Registration form</a>
+                          </li>
+                      </ul>
+                  </div>
+              </li>
+              <li><a class="collapsible-header waves-effect arrow-r"><i class="fa fa-hand-pointer-o"></i> Instruction<i class="fa fa-angle-down rotate-icon"></i></a>
+                  <div class="collapsible-body">
+                      <ul>
+                          <li><a href="#" class="waves-effect">For bloggers</a>
+                          </li>
+                          <li><a href="#" class="waves-effect">For authors</a>
+                          </li>
+                      </ul>
+                  </div>
+              </li>
+              <li><a class="collapsible-header waves-effect arrow-r"><i class="fa fa-eye"></i> About<i class="fa fa-angle-down rotate-icon"></i></a>
+                  <div class="collapsible-body">
+                      <ul>
+                          <li><a href="#" class="waves-effect">Introduction</a>
+                          </li>
+                          <li><a href="#" class="waves-effect">Monthly meetings</a>
+                          </li>
+                      </ul>
+                  </div>
+              </li>
+              <li><a class="collapsible-header waves-effect arrow-r"><i class="fa fa-envelope-o"></i> Contact me<i class="fa fa-angle-down rotate-icon"></i></a>
+                  <div class="collapsible-body">
+                      <ul>
+                          <li><a href="#" class="waves-effect">FAQ</a>
+                          </li>
+                          <li><a href="#" class="waves-effect">Write a message</a>
+                          </li>
+                          <li><a href="#" class="waves-effect">FAQ</a>
+                          </li>
+                          <li><a href="#" class="waves-effect">Write a message</a>
+                          </li>
+                          <li><a href="#" class="waves-effect">FAQ</a>
+                          </li>
+                          <li><a href="#" class="waves-effect">Write a message</a>
+                          </li>
+                          <li><a href="#" class="waves-effect">FAQ</a>
+                          </li>
+                          <li><a href="#" class="waves-effect">Write a message</a>
+                          </li>
+                      </ul>
+                  </div>
+              </li>
+          </ul>
+      </li>
+      <!--/. Side navigation links -->
+  </ul>
+  <div class="sidenav-bg rgba-blue-strong"></div>
+</div>
+<!--/. Sidebar navigation -->
 
     @stop

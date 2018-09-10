@@ -27,7 +27,7 @@ class PostUdateRequest extends FormRequest
             'post_title'     => 'required',
             'post_slug'      => 'required|max:100|regex:/^[a-zA-Z-]{1,100}$/',
             'post_content'   => 'required',
-            'post_thumbnail' => 'mimes:jpeg,png,bmp,tiff |max:4096',
+            'post_thumbnail' => 'mimes:jpeg,jpg,png,gif',
         ];
     }
 
@@ -39,6 +39,7 @@ class PostUdateRequest extends FormRequest
             'post_slug.regex'       => 'slug hanya boleh diisi dengan huruf dan (-) sebagai pengganti spasi',
             'post_slug.max'         => 'slug tidak boleh melebihi dari 100 karakter',
             'post_content.required' => 'Konten minimal 10 karakter',
+            'post_thumbnail.mimes'  => 'Tipe gambar harus jpeg, jpg, png, bmp, tiff, gif',
         ];
     }
 }

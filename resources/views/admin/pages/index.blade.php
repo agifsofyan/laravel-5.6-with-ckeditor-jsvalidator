@@ -13,25 +13,49 @@
 
         @else
 
-            <div class="blog-header">
-                <h1 class="blog-title">Pages <a class="btn btn-sm btn-primary" href="{{ route('pages.create') }}"><i class="fa fa-plus" aria-hidden="true"></i> Add New</a></h1>
+            <div class="blog-header row">
+                <div class="col-6">
+                    <h1 class="blog-title">Pages <a class="btn btn-sm btn-primary" href="{{ route('pages.create') }}"><i class="fa fa-plus" aria-hidden="true"></i> Add New</a></h1>
+                </div>
+                <div class="col-6 text-right">
+                    @if(count($pagesTrash))
+                        <h1 class="blog-title"><a href="{{ route('pages.trash') }}" class="btn btn-sm btn-brown">
+                            <i class="fa fa-trash"></i>
+                            <small>Trash</small>
+                            <span class="badge blue">{{count($pagesTrash)}}</span>
+                        </a></h1>
+                    @endif
+                </div>
             </div>
 
             @include('alert.flash-message')
 
-            <div class="row">
-                <div class="col-md-12">
-
-                    <table class="table">
-                        <tr class="row">
-                            <th class="col-2">Title</th>
-                            <th class="col-2">Slug</th>
-                            <th class="col-2">Content</th>
-                            <th class="col-2">Date</th>
-                            <th class="col-2">Status</th>
-                            <th class="col-2">&nbsp;</th>
-                        </tr>
-                        <tr>
+            <div class="container-fluid ">
+                <section>
+                    <table id="myTables" class="table" cellspacing="0" width="100%">
+                        <thead>
+                            <tr class="row unique-color white-text table-bordered">
+                                <th class="col-2 th-sm">Title
+                                    <i class="fa fa-sort float-right" aria-hidden="true"></i>
+                                </th>
+                                <th class="col-2 th-sm">Slug
+                                    <i class="fa fa-sort float-right" aria-hidden="true"></i>
+                                </th>
+                                <th class="col-2 th-sm">Content
+                                    <i class="fa fa-sort float-right" aria-hidden="true"></i>
+                                </th>
+                                <th class="col-2 th-sm">Date
+                                    <i class="fa fa-sort float-right" aria-hidden="true"></i>
+                                </th>
+                                <th class="col-2 th-sm">Status
+                                    <i class="fa fa-sort float-right" aria-hidden="true"></i>
+                                </th>
+                                <th class="col-2 th-sm">Action
+                                    {{-- <i class="fa fa-sort float-right" aria-hidden="true"></i> --}}
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
                             {{-- Blade if and else --}}
                             @if( $pages->count() )
                                 {{-- Blade foreach --}}
@@ -47,27 +71,37 @@
                                         <td class="col-2">{{ $page->slug }}</td>
                                         <td class="col-2">
                                             @if ( strlen( $page->content ) > 60 )
-                                                {{ substr( $page->content, 0, 60 ) }} ...
+                                                <small>{!! Helper::words($page->content, 20)  !!}</small>
                                             @else
-                                                {{ $page->content }}
+                                                <small>{!! Helper::words($page->content, 20)  !!}</small>
                                             @endif
                                         </td>
-                                        <td class="col-2">Published {{ date( 'j/m/Y', strtotime( $page->created_at ) ) }}</td>
+                                        <td class="col-2">{{ date( 'j/m/Y', strtotime( $page->created_at ) ) }}</td>
                                         {{-- <td>{{ $page->status }}</td> --}}
                                             @if ($page->status=='published')
                                                 <td class="col-2 green-text">{{$page->status}}</td>
                                             @else
                                                 <td class="col-2 grey-text">{{$page->status}}</td>
                                             @endif
+
                                         <td class="col-2">
-                                            <form onclick="confirmDelete()" class="d-inline" action="{{ route('pages.destroy', $page->id) }}" method="POST">
-                                                {{ csrf_field() }}
-                                                {{ method_field('DELETE') }}
+                                            <div class="row">
+                                                <div class="col-6">
+                                                    {{ Form::open(array(
+                                                        'action' => ['PagesController@destroy', $page->id],
+                                                        'method' => 'DELETE',
+                                                        'id'     => $page->id,
+                                                        'style'  => 'display-inline'
+                                                    )) }}
 
-                                                <button type="submit" class="btn btn-sm btn-danger btn-rounded" /><i class="fa fa-trash" aria-hidden="true"></i></button>
-                                            </form>
+                                                    <a class="btn btn-sm btn-danger delete" type="button" data-postTitle="{{ $page->title }}" data-postId="{{ $page->id }}"><i class="fa fa-trash"></i></a>
 
-                                            <a class="btn btn-sm btn-info" href="{{ route('pages.edit', $page->id) }}"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+                                                     {{ Form::close() }}
+                                                </div>
+                                                <div class="col-6">
+                                                    <a class="btn btn-sm btn-info" href="{{ route('pages.edit', $page->id) }}"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+                                                </div>
+                                            </div>
                                         </td>
                                     </tr>
                                 @endforeach
@@ -78,16 +112,14 @@
                                 </tr>
 
                             @endif
-                        </tr>
+                        </tbody>
                     </table>
 
-                    <div class="d-flex justify-content-center">{{ $pages->links() }}</div>
+                    {{-- <div class="d-flex justify-content-center">{{ $pages->links() }}</div> --}}
 
-                </div>
+                </section>
             </div>
 
         @endif
-
     </div>
-
 @endsection

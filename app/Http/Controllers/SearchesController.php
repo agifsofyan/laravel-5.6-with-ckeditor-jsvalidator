@@ -19,8 +19,10 @@ class SearchesController extends Controller
 		$posts = DB::table('categories')
                 ->join('posts', 'categories.id', '=', 'posts.category_ID')
                 ->where('post_title', 'like', "%$sa%")
-                ->orWhere('post_content', 'like', "%$sa%")
+                ->where('posts.deleted_at', '=', null)
+                // ->orWhere('post_content', 'like', "%$sa%")
                 ->select('categories.*', 'posts.*')
+                ->orderBy('posts.created_at','desc')
                 ->paginate(10);
 
 		return view('admin.searches.index', ['posts' => $posts, 'sa' => $sa ]);
@@ -37,8 +39,10 @@ class SearchesController extends Controller
 		$posts = DB::table('categories')
                 ->join('posts', 'categories.id', '=', 'posts.category_ID')
                 ->where('post_title', 'like', "%$su%")
-                ->orWhere('post_content', 'like', "%$su%")
+                ->where('posts.deleted_at', '=', null)
+                // ->orWhere('post_content', 'like', "%$su%")
                 ->select('categories.*', 'posts.*')
+                ->orderBy('posts.created_at','desc')
                 ->paginate(10);
 
 		return view('searches.index', ['posts' => $posts, 'su' => $su ]);

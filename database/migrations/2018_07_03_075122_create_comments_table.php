@@ -23,6 +23,7 @@ class CreateCommentsTable extends Migration
             $table->text('comment_content');
             $table->string('comment_approved', 20);
             $table->bigInteger('user_id');
+            // $table->softDeletes ();
             $table->timestamps();
         });
     }

@@ -10,6 +10,7 @@ use App\Http\Requests;
 use App\Helpers\Helper;
 use App\Comment;
 use Session;
+use Alert;
 
 
 class CommentsController extends Controller

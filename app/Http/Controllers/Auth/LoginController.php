@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Session;
+use Auth;
 
 class LoginController extends Controller
 {
@@ -41,15 +42,24 @@ class LoginController extends Controller
 
     protected function authenticated(Request $request, $user)
     {
-        $request->session()->flash('success', 'You are logged in!');
+        // $request->session()->flash('success', 'You are logged in!');
+
+        // $request->session()->toastr()->success('!! Berhasil Login :)');
+        // $request->session()->with($notification);
+
+        toastr()->success('(: Selamat Datang '.$user->name);
+
+        return redirect('/admin');
     }
 
 
       public function logout(Request $request)
     {
-        $this->guard()->logout();
-        $request->session()->invalidate();
-        $request->session()->flash('errors', 'You are logged out!');
+
+        Auth::logout();
+
+        toastr()->success('You have been logged out.');
+
         return redirect('/admin');
     }
 }

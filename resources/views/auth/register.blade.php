@@ -1,4 +1,4 @@
-@extends('layouts.app')
+{{--  @extends('layouts.app')
 
 @section('content')
 <div class="container">
@@ -74,4 +74,17 @@
         </div>
     </div>
 </div>
+@endsection  --}}
+
+@extends('layouts.app')
+
+@section('content')
+<div class="container">
+    <div class="jumbotron text-center" style="background: #cdecde;">
+        <h1>Maaf anda bukan Super Admin !!.</h1>
+
+        silahkan login atau hubungi Super Admin anda
+    </div>
+</div>
+
 @endsection

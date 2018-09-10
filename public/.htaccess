@@ -3,6 +3,25 @@
         Options -MultiViews -Indexes
     </IfModule>
 
+    <ifModule mod_deflate.c>
+        AddOutputFilterByType DEFLATE text/plain
+        AddOutputFilterByType DEFLATE text/html
+        AddOutputFilterByType DEFLATE text/xml
+        AddOutputFilterByType DEFLATE text/css
+        AddOutputFilterByType DEFLATE application/xml
+        AddOutputFilterByType DEFLATE application/xhtml+xml
+        AddOutputFilterByType DEFLATE application/rss+xml
+        AddOutputFilterByType DEFLATE application/javascript
+        AddOutputFilterByType DEFLATE application/x-javascript
+    </ifModule>
+
+    # Or, compress certain file types by extension:
+    <ifModule mod_deflate.c>
+        <files *.html>
+            SetOutputFilter DEFLATE
+        </files>
+    </ifModule>
+
     RewriteEngine On
 
     # Handle Authorization Header

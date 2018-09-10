@@ -5,12 +5,16 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\PageRequest;
 use App\Http\Requests\PageUpdateRequest;
+use App\Http\Requests\SiteRequest;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Page;
+use App\Reservation;
 use Image;
 use Session;
 use File;
+use DB;
+use Alert;
 // use Validator;
 
 class PagesController extends Controller
@@ -19,9 +23,9 @@ class PagesController extends Controller
     {
         // Fetch records in pagination so only 10 pages per page
         // To get all records you may use get() method
-        $pages = Page::paginate( 6 );
-
-        return view('admin.pages.index', ['pages' => $pages]);
+        $pages = Page::orderBy('created_at','desc')->latest()->paginate(10);
+        $pagesTrash = Page::onlyTrashed()->get();
+        return view('admin.pages.index', compact('pages', 'pagesTrash'));
     }
 
     /**
@@ -62,13 +66,16 @@ class PagesController extends Controller
 
         $page->save();
 
-        // Store data for only a single request and destory
-        // Session::flash( 'sucess', 'Page created.' );
+        if ($page->save()) {
+            toastr()->success('!! Halaman berhasil dibuat !!');
 
-        // Redirect to `pages.show` route
-        // Use route:list to view the `Action` or where this routes going to
-        // return redirect()->route('pages.show', $page->id);
-        return redirect()->route('pages.show', $page->id)->with('success', 'Page created successfully!');
+            return redirect()->route('pages.index', $page->id);
+        }else{
+            toastr()->error('Terjadi kesalahan pada internet, coba sekali lagi.');
+            return back();
+        }
+
+        // return redirect()->route('pages.show', $page->id)->with('success', 'Page created successfully!');
     }
 
     /**
@@ -123,9 +130,18 @@ class PagesController extends Controller
 
         $page->save();
 
+        if ($page->save()) {
+            toastr()->success('!! Halaman berhasil diedit !!');
+
+            return redirect()->route('pages.index', $page->id);
+        }else{
+            toastr()->error('Terjadi kesalahan pada internet, coba sekali lagi.');
+            return back();
+        }
+
         // Session::flash('success', 'Page updated.');
 
-        return redirect()->route('pages.index', $page->id)->with('success', 'Page updated successfully!');
+        // return redirect()->route('pages.index', $page->id)->with('success', 'Page updated successfully!');
     }
 
     /**
@@ -140,28 +156,60 @@ class PagesController extends Controller
         $page = Page::findOrFail( $id );
 
         // https://laravel.com/docs/5.4/queries#deletes
-        $page->delete();
+        // $page->delete();
+
+        if ($page->delete()) {
+            toastr()->info('!! Halaman berhasil dihapus !!');
+
+            return redirect()->route('pages.index', $page->id);
+        }else{
+            toastr()->error('Terjadi kesalahan pada internet, coba sekali lagi.');
+            return back();
+        }
 
         // Session::flash('success', 'Page deleted.');
 
-        return redirect()->route('pages.index')->with('error', 'Page deleted successfully!');
+        // return redirect()->route('pages.index')->with('error', 'Page deleted successfully!');
     }
 
+    public function trash()
+    {
+        $pagesTrash = Page::onlyTrashed()->orderBy('updated_at','desc')->paginate(10);
+        $pages = Page::get();
+        // $trash = DB::table('posts')
+        //             ->whereNotNull('deleted_at')
+        //             ->paginate(10);
 
-    // For Get Single Page
-    public function getPage( $slug) {
-        $page = Page::where('slug', $slug)->get();
-
-    	return view('pages.page', ['page' => $page]);
+        return view('admin.pages.trash', compact('pagesTrash','pages'));
     }
 
-    // for Home User
-    public function getHome( Request $request ) {
+    public function restore($id)
+    {
+        $pagesTrash = Page::onlyTrashed()->findOrFail($id);
+        $page = Page::paginate(10);
 
-        $posts = \App\Post::where('post_type', 'post')
-                 ->get();
+        if ($pagesTrash->restore()) {
+            toastr()->info('!! Artikel berhasil direstore !!');
 
-            // It replaces the previous `index.blade.php` blade file that is now used in displaying lists of added pages
-        return view('pages.index', [ 'posts' => $posts ]);
+            // return redirect()->route('posts.trash');
+            return back();
+        }else{
+            toastr()->error('Terjadi kesalahan pada internet, coba sekali lagi.');
+            return back();
+        }
+        // return $trash;
+    }
+
+    public function forceDelete($id)
+    {
+        $pagesTrash = Page::onlyTrashed()->where('id', $id);
+        // dd($postsTrash);
+        if ($pagesTrash->forceDelete()) {
+            toastr()->warning('Artikel berhasil dihapus secara permanen');
+            return back();
+        }else{
+            toastr()->error('Terjadi kesalahan pada internet, coba sekali lagi.');
+            return back();
+        }
     }
 }

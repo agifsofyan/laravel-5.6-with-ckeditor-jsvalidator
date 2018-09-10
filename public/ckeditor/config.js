@@ -10,6 +10,7 @@ CKEDITOR.editorConfig = function( config ) {
     config.toolbarCanCollapse = true;
 };
 
+
 // CKEDITOR.replace('my-editor');
 // $(document).ready(function(){
 

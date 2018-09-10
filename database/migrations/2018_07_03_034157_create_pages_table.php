@@ -20,7 +20,9 @@ class CreatePagesTable extends Migration
             $table->string('slug', 150)->unique();
             $table->text('content');
             $table->enum('status', ['drafted', 'published'])->default('drafted');
+            // $table->softDeletes ();
             $table->timestamps();
+            $table->softDeletes();
         });
 
         // Schema::table('pages', function(Blueprint $table) {

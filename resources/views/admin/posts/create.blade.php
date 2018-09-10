@@ -55,7 +55,7 @@
 						<div class="form-group{{ $errors->has('post_content') ? ' has-error' : '' }}">
 							<label for="post_content">Content</label> <br/>
 
-                            <textarea id="my-editor" class="form-control" name="post_content" rows="10" cols="80">{{ old('post_content') }}</textarea>
+                            <textarea id="my-editor" class="form-control" name="post_content" rows="10" cols="80">{{ old(htmlspecialchars('post_content')) }}</textarea>
 
 							@if ($errors->has('post_content'))
 	                            <span class="help-block">
@@ -70,8 +70,8 @@
 
 							<select name="category_ID" id="category_ID" class="custom-select browser-default col-5">
 								<?php
-									if( $categories ) {
-										foreach( $categories as $category ) {
+									if( $catNow ) {
+										foreach( $catNow as $category ) {
 											?>
 												<option value="{{ $category->id }}">{{ $category->category_name }}</option>
 											<?php
@@ -81,12 +81,18 @@
 							</select>
 						</div>
 
-						<div class="form-group">
+						<div class="form-group {{ $errors->has('post_thumbnail') ? ' has-error' : '' }}">
                             <label class="btn btn-outline-primary" for="post_thumbnail">
                                 <input type="file" class="custom-file-input" name="post_thumbnail" id="post_thumbnail" style="display:none;" onchange="$('#upload-file-info').html(this.files[0].name)">
                                 Upload Thumbnail
                             </label>
                             <span class='label label-info brown-text' id="upload-file-info"></span>
+
+                            @if ($errors->has('post_thumbnail'))
+	                            <span class="help-block">
+	                                <small class="red-text">{{ $errors->first('post_thumbnail') }}</small>
+	                            </span>
+	                        @endif
                         </div>
 
 						<div class="form-group">

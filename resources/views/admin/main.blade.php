@@ -16,8 +16,12 @@
     <link href="{{asset('css/bootstrap.min.css')}}" rel="stylesheet">
     <!-- Material Design Bootstrap -->
     <link href="{{asset('css/mdb.min.css')}}" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('css/datatable/datatable.min.css') }}">
     {{--  CK Editor  --}}
     <link href="{{ asset('ckeditor/plugins/codesnippet/lib/highlight/styles/default.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/sweetalert2/0.4.5/sweetalert2.css">
+    {{-- Toast --}}
+    @toastr_css
     <link rel="stylesheet" href="{{asset('css/admin.css')}}">
 </head>
 <body>
@@ -37,19 +41,53 @@
     <!-- SCRIPTS -->
     <!-- JQuery -->
     <script type="text/javascript" src="{{asset('js/jquery-3.3.1.min.js')}}"></script>
-    <!-- Bootstrap tooltips -->
-    <script type="text/javascript" src="{{asset('js/popper.min.js')}}"></script>
     <!-- Bootstrap core JavaScript -->
     <script type="text/javascript" src="{{asset('js/bootstrap.min.js')}}"></script>
+    <!-- Bootstrap tooltips -->
+    <script type="text/javascript" src="{{asset('js/popper.min.js')}}"></script>
     <!-- MDB core JavaScript -->
     <script type="text/javascript" src="{{asset('js/mdb.min.js')}}"></script>
+    <script type="text/javascript" src="{{asset('js/datatables/datatables.min.js')}}"></script>
     {{--  Confirmation  --}}
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-confirmation/1.0.5/bootstrap-confirmation.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/sweetalert2/0.4.5/sweetalert2.min.js"></script>
     {{--  CKEditor  --}}
     <script src="{{asset('ckeditor/ckeditor.js')}}"></script>
     <script src="{{ asset('ckeditor/plugins/codesnippet/lib/highlight/highlight.pack.js') }}"></script>
     <script>hljs.initHighlightingOnLoad();</script>
 
+    {{-- Toast --}}
+    @toastr_js
+    @toastr_render
+
     @include('alert.validator')
+    @include('alert.confirm')
+
+    <script>
+        $(document).ready(function(){
+            $('[data-toggle="tooltip"]').tooltip();
+        });
+    </script>
+
+    <script>
+            $(document).ready(function () {
+                $('#myTables').DataTable();
+                $('#myTables_wrapper').find('label').each(function () {
+                  $(this).parent().append($(this).children());
+                });
+                $('#myTables_wrapper .dataTables_filter').find('input').each(function () {
+                  $('input').attr("placeholder", "Search");
+                  $('input').removeClass('form-control-sm');
+                });
+                $('#myTables_wrapper .dataTables_length').addClass('d-flex').find('label').addClass('teal-text mr-3 mt-3 text-fluid');
+                $('#myTables_wrapper .dataTables_filter').addClass('md-form m-2');
+                $('#myTables_wrapper select').removeClass('custom-select custom-select-sm form-control form-control-sm');
+                $('#myTables_wrapper select').addClass('mdb-select');
+                $('#myTables_wrapper .mdb-select').material_select();
+                $('#myTables_wrapper .dataTables_filter').find('label').remove();
+                $('#myTables_wrapper .dataTables_info').addClass('teal-text');
+                $('#myTables_wrapper .row');
+              });
+    </script>
 </body>
 </html>

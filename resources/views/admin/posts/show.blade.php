@@ -23,9 +23,11 @@
 			<div class="row">
 				<div class="col-sm-12 blog-main">
 
-					<div class="blog-thumbnail">
-						<img src="/uploads/{{ $post->post_thumbnail }}" alt="{{ $post->post_title }}" />
-					</div>
+					<div class="blog-thumbnail text-center">
+						<img src="/uploads/{{ $post->post_thumbnail }}" alt="{{ $post->post_thumbnail }}" data-toggle="tooltip" data-placement="bottom" title="Image thumbnail" class="img-fluid img-thumbnail z-depth-3" />
+                    </div>
+
+                    <hr>
 
 					<div class="blog-content">
 						{{-- Inserts HTML line breaks before all newlines in a string --}}

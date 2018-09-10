@@ -2,6 +2,9 @@
 
 namespace App\Helpers;
 
+use Illuminate\Support\Facades\URL;
+use Illuminate\Http\Request;
+use Route;
 use App\User;
 use App\Post;
 use App\Category;
@@ -11,6 +14,20 @@ use App\Page;
 use Illuminate\Support\Facades\DB;
 class Helper
 {
+
+    // public static function get_userinfo( $user_id )
+    // {
+    //     if( empty( $user_id ) )
+    //         return;
+
+    //     $user_infos = User::where('id', $user_id)->first();
+
+    //     if( $user_infos )
+    //         return $user_infos;
+
+    //     return false;
+    // }
+
 	/**
      * Return user selected infos
      */
@@ -19,7 +36,12 @@ class Helper
         if( empty( $user_id ) )
             return;
 
-        $user_infos = User::where('id', $user_id)->first();
+        // $user_infos = User::where('id', $user_id)->first();
+
+        $user_infos = DB::table('users')
+                    ->join('posts', 'users.id', '=', 'posts.author_ID')
+                    ->select('users.*', 'posts.*')
+                    ->first();
 
         if( $user_infos )
             return $user_infos;
@@ -214,9 +236,50 @@ class Helper
         return ob_get_clean();
     }
 
+    public static function getArticleList(){
+
+        $category_slug = Request::segment(2);
+
+        $posts = DB::table('categories')
+                    ->join('posts', 'categories.id', '=', 'posts.category_ID')
+                    ->where('category_slug', $category_slug)
+                    ->select('categories.*', 'posts.*')
+                    ->paginate(10);
+
+        return $posts;
+    }
+
+    // public static function getArticleList(){
+
+    //     Route::get('diseases/{slug_cat}/{slug_post}', function (Request $request, $category_slug, $post_slug){
+    //         if (! $request) :
+    //             abort(403);
+
+    //             else :
+
+    //                 $posts = DB::table('categories')
+    //                             ->join('posts', 'categories.id', '=', 'posts.category_ID')
+    //                             ->where('category_slug', '=', $category_slug)
+    //                             ->orWhere('post_slug', '=', $post_slug)
+    //                             ->select('categories.*', 'posts.*')
+    //                             ->paginate(10);
+
+    //                 return $posts;
+
+    //             endif;
+    //     });
+    // }
+
+    // public static function getArticleList($id){
+
+    //         $posts = Post::findOrFail('id');
+
+    //         return $posts;
+    // }
+
     // Fungsi Helper untuk STR word(String)
 
-    public static function words($value, $words = 100, $end = '...')
+    public static function words($value, $words, $end = '...')
     {
         return \Illuminate\Support\Str::words($value, $words, $end);
     }

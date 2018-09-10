@@ -1,6 +1,6 @@
     <div class="wrapper">
         <!-- Sidebar  -->
-        <nav id="sidebar">
+        <nav id="sidebar" class="color-block blue-gradient z-depth-2">
             <div class="sidebar-header">
                 <h3>Admin Panel</h3>
                 <strong>AP</strong>
@@ -19,8 +19,21 @@
                         Pages
                     </a>
                     <ul class="collapse list-unstyled" id="pagesSubmenu">
-                        <li><a href="{{ route('pages.index') }}">All Pages</a></li>
-                        <li><a href="{{ route('pages.create') }}">Add New</a></li>
+                        <li>
+                            <a href="{{ route('pages.index') }}"><i class="fa fa-list"></i>
+                                <small>All Pages</small>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ route('pages.create') }}"><i class="fa fa-plus"></i>
+                                <small>Add New</small>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ route('pages.trash') }}"><i class="fa fa-trash"></i>
+                                <small>Trash</small>
+                            </a>
+                        </li>
                     </ul>
                 </li>
 
@@ -31,8 +44,21 @@
                         Posts
                     </a>
                     <ul class="collapse list-unstyled" id="pageSubmenu">
-                        <li><a href="{{ route('posts.index') }}">All Posts</a></li>
-                        <li><a href="{{ route('posts.create') }}">Add New</a></li>
+                        <li>
+                            <a href="{{ route('posts.index') }}"><i class="fa fa-list"></i>
+                                <small>All Posts</small>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ route('posts.create') }}"><i class="fa fa-plus"></i>
+                                <small>Add New</small>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ route('posts.trash') }}"><i class="fa fa-trash"></i>
+                                <small>Trash</small>
+                            </a>
+                        </li>
                     </ul>
                 </li>
 
@@ -44,17 +70,39 @@
                 </a></li> --}}
 
                 {{-- Comments --}}
+                <li>
+                    <a href="#CategorySubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                        <i class="fa fa-tag"></i>
+                        Category
+                    </a>
+                    <ul class="collapse list-unstyled" id="CategorySubmenu">
+                        <li>
+                            <a href="{{ route('categories.index') }}"><i class="fa fa-list"></i>
+                                <small>All Category</small>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ route('categories.create') }}"><i class="fa fa-plus"></i>
+                                <small>Add New</small>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ route('categories.trash') }}"><i class="fa fa-trash"></i>
+                                <small>Trash</small>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
 
                 <li>
-                    <a href="{{ route('categories.index') }}">
-                        <i class="fa fa-tag"></i>
-                        <small>Categories</small>
-                    </a>
+                    <span class="d-inline-block" tabindex="0" data-toggle="tooltip" title="Maaf sementara link di nonaktifkan" style="cursor: not-allowed;">
+                        <a style="pointer-events: none;" type="button" disabled href="{{ route('comments.index') }}">
+                            <i class="fa fa-comments-o"></i>
+                            <small>Comments</small>
+                        </a>
+                    </span>
 
-                    <a href="{{ route('comments.index') }}">
-                        <i class="fa fa-comments-o"></i>
-                        <small>Comments</small>
-                    </a>
+
                 </li>
 
                 <hr>
@@ -64,8 +112,6 @@
                         <li><a class="blog-nav-item {{ $page->id == Request::query('page_id') ? 'active' : '' }}" href="/?page_id={{ $page->id }}">{{ $page->post_title }}</a></li>
                     @endforeach
                 @endif  --}}
-
-                <hr>
 
                 <li class="text-center unique-color">
                         <small class="text-muted light-blue-text"><i class="fa fa-copyright"></i>
@@ -88,14 +134,11 @@
                         <i class="fa fa-align-justify"></i>
                     </button>
 
-                    <div>
-                        {{-- <h4>Search</h4> --}}
+                    {{-- <div>
                         <form action="/search/" method="GET" class="form-inline active-cyan-4">
                             <input type="text" name="sa" value="{{ Request::query('sa') }}" placeholder="Enter For Search this site..." class="form-control form-control-sm mr-3 w-75"/>
-
-                            {{-- <button type="submit" class="btn btn-info btn-sm">Search</button> --}}
                         </form>
-                    </div>
+                    </div> --}}
 
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="navbar-nav ml-auto">
@@ -104,9 +147,9 @@
                                 <li class="nav-item">
                                     <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
                                 </li>
-                                <li class="nav-item">
+                                {{--  <li class="nav-item">
                                     <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-                                </li>
+                                </li>  --}}
                             @else
                                 <li class="nav-item dropdown">
                                     <a id="navbarDropdown" class="nav-link fa fa-caret-down" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>

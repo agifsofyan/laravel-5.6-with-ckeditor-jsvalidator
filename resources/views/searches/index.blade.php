@@ -13,7 +13,7 @@
             <p>We ve found {{ $posts->count() }} results for your search term in all blog entries</p>
         </div>
 
-        <br>
+        <hr style="background: #4caf50;">
 
         <div class="row">
             <div class="col-12 blog-main">
@@ -22,17 +22,26 @@
                     @foreach( $posts as $post )
 
                         <div class="blog-post">
-                            <h2 class="blog-post-title cyan-test">
+                            <h2 class="blog-post-title cyan-test text-center pl-3 pr-3">
                                 <a href="/diseases/{{ $post->category_slug}}/{{ $post->post_slug }}">{{ $post->post_title }}</a>
                             </h2>
-                            <p class="blog-post-meta">{{ date('M j, Y', strtotime( $post->created_at )) }} by <a href="#" class="teal-text disabled">{{ Helper::get_userinfo( $post->author_ID )->name }}</a></p>
+                            <p class="blog-post-meta pl-3 pr-3">{{ date('M j, Y', strtotime( $post->created_at )) }} by <a href="#" class="teal-text disabled">{{ Helper::get_userinfo( $post->author_ID )->name }}</a></p>
 
                             <div class="blog-content">
                                 {{--If post content is > 200 in characters display 200 only or else display the whole content--}}
-                                {{ strlen( $post->post_content ) > 200 ? substr( $post->post_content, 0, 200) . ' ...' : $post->post_content }}
-
-                                <a href="/diseases/{{ $post->category_slug}}/{{ $post->post_slug }}" class="btn btn-success btn-sm">Read more</a>
-                                <br><hr>
+                                <div class="pl-3 pr-3">
+                                    {!! Helper::words($post->post_content, 70,'....')  !!}
+                                </div>
+                                <hr>
+                                <a href="/diseases/{{ $post->category_slug}}" class="green-text float-left ml-3">
+                                    <h6 class="font-bold pb-1"><i class="fa fa-tag"></i>
+                                        {{-- {{ Helper::get_category( $category->category_name ) }} --}}
+                                        {{ Helper::get_category( $post->category_ID )->category_name }}
+                                    </h6>
+                                </a>
+                                <a href="/diseases/{{ $post->category_slug}}/{{ $post->post_slug }}" class="btn btn-outline-success btn-sm float-right mr-3" style="margin-top: 0; top: -5px;">Read more</a>
+                                <br>
+                                <hr style="background: #4caf50;">
                             </div>
                         </div>
 

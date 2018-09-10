@@ -148,7 +148,8 @@ return [
         Illuminate\View\ViewServiceProvider::class,
 
         // for file-manager (unisharp)
-        Unisharp\Laravelfilemanager\LaravelFilemanagerServiceProvider::class,
+        // Unisharp\Laravelfilemanager\LaravelFilemanagerServiceProvider::class,
+        UniSharp\LaravelFilemanager\LaravelFilemanagerServiceProvider::class,
 
         // Intervention Image,
         Intervention\Image\ImageServiceProvider::class,
@@ -158,6 +159,9 @@ return [
 
         // Toast Notifier
         Yoeunes\Toastr\ToastrServiceProvider::class,
+
+        // Form
+        'Collective\Html\HtmlServiceProvider',
 
         /*
          * Package Service Providers...
@@ -171,6 +175,9 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
+
+        // SweetAlert
+        UxWeb\SweetAlert\SweetAlertServiceProvider::class,
 
     ],
 
@@ -228,6 +235,16 @@ return [
 
         // Realtime Validation
         'JsValidator' => Proengsoft\JsValidation\Facades\JsValidatorFacade::class,
+
+        // Helper
+        'Helper' => App\Helpers\Helper::class,
+
+        // Form
+        'Form' => 'Collective\Html\FormFacade',
+        'Html' => 'Collective\Html\HtmlFacade',
+
+        // sweetAlert
+        'Alert' => UxWeb\SweetAlert\SweetAlert::class,
 
     ],
 

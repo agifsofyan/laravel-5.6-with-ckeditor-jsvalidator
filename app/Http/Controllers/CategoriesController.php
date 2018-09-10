@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Category;
 use Session;
+use Alert;
 
 class CategoriesController extends Controller
 {
@@ -21,9 +22,10 @@ class CategoriesController extends Controller
     {
         // Fetch records in pagination so only 10 categories per page
         // To get all records you may use get() method
-        $categories = Category::paginate( 10 );
+        $categories = Category::orderBy('created_at','desc')->latest()->paginate( 10 );
+        $catsTrash = Category::onlyTrashed()->get();
 
-        return view('admin.categories.index', ['categories' => $categories]);
+        return view('admin.categories.index', compact('categories', 'catsTrash'));
     }
 
     /**
@@ -57,9 +59,19 @@ class CategoriesController extends Controller
 
         $category->save();
 
+        if ($category->save()) {
+            toastr()->success('!! Kategori berhasil dibuat !!');
+
+            return redirect()->route('categories.index', $category->id);
+        }
+
+        toastr()->error('Terjadi kesalahan pada internet, coba sekali lagi.');
+
+        return back();
+
         // Session::flash('success', 'Category added.');
 
-        return redirect()->route('categories.show', $category->id)->with('success', 'Category added');
+        // return redirect()->route('categories.show', $category->id)->with('success', 'Category added');
     }
 
     /**
@@ -111,9 +123,20 @@ class CategoriesController extends Controller
 
         $category->save();
 
+        if ($category->save()) {
+            toastr()->success('!! Kategori berhasil diedit !!');
+
+            return redirect()->route('categories.index', $category->id);
+        }
+
+        toastr()->error('Terjadi kesalahan pada internet, coba sekali lagi.');
+
+        return back();
+
+
         // Session::flash('success', 'Category updated.');
 
-        return redirect()->route('categories.show', $id)->with('success', 'Category updated');
+        // return redirect()->route('categories.show', $id)->with('success', 'Category updated');
     }
 
     /**
@@ -126,10 +149,55 @@ class CategoriesController extends Controller
     {
         $category = Category::findOrFail( $id );
 
-        $category->delete();
+        if ($category->delete()) {
+            toastr()->info('!! Kategori berhasil dihapus !!');
 
-        // Session::flash('success', 'Category deleted.');
+            return redirect()->route('categories.index', $category->id);
+        }else{
+            toastr()->error('Terjadi kesalahan pada internet, coba sekali lagi.');
 
-        return redirect()->route('categories.index')->with('error', 'Category deleted.');
+        return back();
+        }
+    }
+
+    public function trash()
+    {
+        $catsTrash = Category::onlyTrashed()->orderBy('updated_at','desc')->paginate(10);
+        $categories = Category::get();
+        // $trash = DB::table('cats')
+        //             ->whereNotNull('deleted_at')
+        //             ->paginate(10);
+
+        return view('admin.categories.trash', compact('catsTrash','categories'));
+    }
+
+    public function restore($id)
+    {
+        $catsTrash = Category::onlyTrashed()->findOrFail($id);
+        $cats = Category::paginate(10);
+
+        if ($catsTrash->restore()) {
+            toastr()->info('!! Artikel berhasil direstore !!');
+
+            // return redirect()->route('cats.trash');
+            return back();
+        }else{
+            toastr()->error('Terjadi kesalahan pada internet, coba sekali lagi.');
+            return back();
+        }
+        // return $trash;
+    }
+
+    public function forceDelete($id)
+    {
+        $catsTrash = Category::onlyTrashed()->where('id', $id);
+        // dd($catsTrash);
+        if ($catsTrash->forceDelete()) {
+            toastr()->warning('Artikel berhasil dihapus secara permanen');
+            return back();
+        }else{
+            toastr()->error('Terjadi kesalahan pada internet, coba sekali lagi.');
+            return back();
+        }
     }
 }

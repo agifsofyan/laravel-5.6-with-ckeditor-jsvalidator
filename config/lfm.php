@@ -69,10 +69,10 @@ return [
     */
 
     // If true, the uploaded file will be renamed to uniqid() + file extension.
-    'rename_file' => true,
+    'rename_file' =>  true,
 
     // If rename_file set to false and this set to true, then non-alphanumeric characters in filename will be replaced.
-    'alphanumeric_filename' => true,
+    'alphanumeric_filename' => false,
 
     // If true, non-alphanumeric folder name will be rejected.
     'alphanumeric_directory' => false,
@@ -88,7 +88,6 @@ return [
 
     // available since v1.3.0
     'valid_image_mimetypes' => [
-        'image/jpg',
         'image/jpeg',
         'image/pjpeg',
         'image/png',
@@ -101,7 +100,6 @@ return [
 
     // Create thumbnails automatically only for listed types.
     'raster_mimetypes' => [
-        'image/jpg',
         'image/jpeg',
         'image/pjpeg',
         'image/png',
@@ -119,7 +117,6 @@ return [
     // available since v1.3.0
     // only when '/laravel-filemanager?type=Files'
     'valid_file_mimetypes' => [
-        'image/jpg',
         'image/jpeg',
         'image/pjpeg',
         'image/png',
@@ -135,8 +132,8 @@ return [
     |--------------------------------------------------------------------------
     */
 
-    // 'thumb_img_width' => auto,
-    // 'thumb_img_height' => auto,
+    'thumb_img_width' => 200,
+    'thumb_img_height' => 200,
 
     /*
     |--------------------------------------------------------------------------
@@ -152,7 +149,6 @@ return [
         'xlsx' => 'Microsoft Excel',
         'zip'  => 'Archive',
         'gif'  => 'GIF Image',
-        'jpg'  => 'JPG Image',
         'jpg'  => 'JPEG Image',
         'jpeg' => 'JPEG Image',
         'png'  => 'PNG Image',

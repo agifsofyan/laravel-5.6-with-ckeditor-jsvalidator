@@ -8,6 +8,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests;
 use App\Post;
 use Session;
+use DB;
 
 class AdminsController extends Controller
 {
@@ -184,8 +185,11 @@ class AdminsController extends Controller
         // If none of the above is true, then display most recently added Blot posts
         else :
 
-            $posts = \App\Post::where('post_type', 'post')
-                    ->paginate( 6 );
+            $posts = DB::table('categories')
+                ->join('posts', 'categories.id', '=', 'posts.category_ID')
+                ->where('post_type', 'post')
+                ->select('categories.*', 'posts.*')
+                ->paginate(10);
 
             // It replaces the previous `index.blade.php` blade file that is now used in displaying lists of added pages
             return view('admin.pages.frontpage', [ 'posts' => $posts ]);

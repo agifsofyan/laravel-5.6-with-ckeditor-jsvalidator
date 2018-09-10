@@ -13,12 +13,14 @@
 
         @else
 
+            @include('alert.flash-message')
+
             <div class="blog-header">
                 <h1 class="blog-title">Comments</h1>
             </div>
 
             <div class="row">
-                <div class="col-md-12">
+                <div class="col-12">
 
                     <a href="{{ route('comments.index') }}">All</a> | <a href="{{ route('comments.index') }}/?comment_status=1">Approved</a>
 
@@ -32,7 +34,7 @@
                         </tr>
                         <tr>
                             {{-- Blade if and else --}}
-                            @if( $comments->count() )
+                            @if(count($comments) )
                                 {{-- Blade foreach --}}
                                 @foreach( $comments as $comment )
 									<tr>
@@ -78,12 +80,23 @@
                                                 </form>
                                             <?php endif; ?>
                                             |
-                                            <form class="d-inline" action="{{ route('comments.destroy', $comment->id) }}" method="POST">
+                                            {{--  <form class="d-inline" action="{{ route('comments.destroy', $comment->id) }}" method="POST">
                                                 {{ csrf_field() }}
                                                 {{ method_field('DELETE') }}
 
                                                 <input type="submit" value="Delete" class="btn btn-sm btn-danger" />
-                                            </form>
+                                            </form>  --}}
+
+                                            {{ Form::open(array(
+                                                'action' => ['CommentsController@destroy', $comment->id],
+                                                'method' => 'DELETE',
+                                                'id'     => $comment->id,
+                                                'style'  => 'display-inline'
+                                            )) }}
+
+                                            <a class="btn btn-sm btn-danger delete-comment" type="button" data-commentTitle="{{ $comment->title }}" data-commentId="{{ $comment->id }}"><i class="fa fa-trash"></i></a>
+
+                                            {{ Form::close() }}
 
                                             <a class="btn btn-sm btn-info" href="{{ route('comments.edit', $comment->id) }}">Edit</a>
                                         </td>

@@ -1,6 +1,6 @@
 @extends('admin.main')
 
-@section('title', '| Blog Tutorial')
+@section('title', '| Klinik Sentosa')
 
 @section('content')
     <div class="container">

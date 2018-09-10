@@ -103,10 +103,10 @@
     </div>
 </div>  --}}
 
-<div class="container-fluid fixed-bottom" id="chatFix">
+{{--  <div class="container-fluid fixed-bottom" id="chatFix">
     <div class="row" id="subChat">
         <div id="chat" class="col-4 text-center" style="padding: 0; margin: 0;" onclick="myChat()">
-            <a href="#"></a>
+            <a href="#"><img src="{{asset('img/chat/Chat-menu-bar2.png')}}" alt="Telephone" style="width: 100%;"></a>
         </div>
         <div id="call" class="col-4 text-center" style="padding: 0; margin: 0;">
             <a href="tel:081362621616"><img src="{{asset('img/chat/Telepon-Menu-bar2.png')}}" alt="Telephone" style="width: 100%;"></a>
@@ -115,4 +115,4 @@
             <a href="#"><img src="{{asset('img/chat/Reservation.png')}}" alt="Reservation" style="width: 100%;"></a>
         </div>
     </div>
-</div>
+</div>  --}}

@@ -31,8 +31,6 @@
 </script>
 
 <script>
-    function confirmDelete(){
-        if(!confirm("Are You Sure to delete this"))
-        event.preventDefault();
-    }
+    document.getElementById("chat").onclick = function() {
+        window.location.href = "https://mqa.zoosnet.net/LR/Chatpre.aspx?id=MQA87261512&lng=en";
 </script>

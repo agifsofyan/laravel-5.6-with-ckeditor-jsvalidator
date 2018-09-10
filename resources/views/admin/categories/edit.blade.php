@@ -1,6 +1,6 @@
 @extends('admin.main')
 
-@section('title', '| Add New Category')
+@section('title', '| Edit Category')
 
 @section('content')
 

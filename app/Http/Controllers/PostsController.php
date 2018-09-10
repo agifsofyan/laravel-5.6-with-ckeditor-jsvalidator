@@ -8,10 +8,12 @@ use App\Http\Requests\PostUdateRequest;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Post;
+use App\Category;
 use Image;
 use Session;
 use File;
-
+use DB;
+use Alert;
 
 class PostsController extends Controller
 {
@@ -22,24 +24,19 @@ class PostsController extends Controller
      */
     public function index()
     {
-        $posts = Post::paginate( 10 );
+        // $posts = Post::find(1);
+        // $posts->delete();
 
-        return view('admin.posts.index', ['posts' => $posts]);
-    }
-    // public function index()
-    // {
-    //     $posts = Post::where('post_type', 'post')->paginate( 10 );
+        // $posts = DB::table('categories')
+        //         ->join('posts', 'categories.id', '=', 'posts.category_ID')
+        //         ->select('categories.*', 'posts.*')
+        //         ->orderBy('posts.created_at','desc')
+        //         ->paginate(10);
 
-    //     return view('admin.posts.index', ['posts' => $posts]);
-    // }
+        $posts = Post::latest()->get();
+        $postsTrash = Post::onlyTrashed()->get();
 
-    public function balanitis()
-    {
-        // Fetch data in pagination so only 10 posts per page
-        // To get all data you may use get() method
-        $posts = Post::where('post_type', 'post')->paginate( 10 );
-
-        return view('diseases.balanitis.index', ['posts' => $posts]);
+        return view('admin.posts.index', compact('posts', 'postsTrash'));
     }
 
     /**
@@ -50,7 +47,9 @@ class PostsController extends Controller
     public function create()
     {
         // Directly display `posts.create` view blade file
-        return view('admin.posts.create');
+        $catNow = Category::orderBy('category_name','asc')->latest()->get();
+
+        return view('admin.posts.create', compact('catNow'));
     }
 
     /**
@@ -88,7 +87,9 @@ class PostsController extends Controller
             $post_thumbnail     = $request->file('post_thumbnail');
             $filename           = $post_thumbnail->getClientOriginalName();
 
-            Image::make($post_thumbnail)->resize(600, 600)->save( public_path('uploads/' . $filename ) );
+            $path               = 'uploads/' . $filename;   // direktori gambar dengan nama uploads
+
+            Image::make($post_thumbnail)->resize(600, 600)->save( $path );
 
             // Set post-thumbnail url
             $post->post_thumbnail = $filename;
@@ -96,12 +97,16 @@ class PostsController extends Controller
 
         $post->save();
 
-        // Store data for only a single request and destory
-        // Session::flash( 'sucess', 'Post published.');
+        if ($post->save()) {
+            toastr()->success('!! Artikel berhasil di buat !!');
 
-        // Redirect to `posts.show` route
-        // Use route:list to view the `Action` or where this routes going to
-        return redirect()->route('posts.show', $post->id)->with('success', 'Post published');
+            return redirect()->route('posts.index', $post->id);
+        }else{
+            toastr()->error('Terjadi kesalahan pada internet, coba sekali lagi.');
+            return back();
+        }
+
+        // return redirect()->route('posts.show', $post->id)->with('success', 'Post published');
     }
 
     /**
@@ -160,25 +165,29 @@ class PostsController extends Controller
         // Check if file is present
         if( $request->hasFile('post_thumbnail') ) {
             $post_thumbnail     = $request->file('post_thumbnail');
-            $filename           = 'update.' . $post_thumbnail->getClientOriginalName();
+            $filename           = time().'.'.$post_thumbnail->getClientOriginalName();
 
-            Image::make($post_thumbnail)->resize(600, 600)->save( public_path('/uploads/' . $filename ) );
+
+            $path               = 'uploads/' . $filename;   // direktori gambar dengan nama uploads
+
+            Image::make($post_thumbnail)->resize(600, 600)->save( $path );
 
             // Set post-thumbnail url
             $post->post_thumbnail = $filename;
-            $file = public_path('uploads/' . $post->post_thumbnail );
-            // Do some checking here
-
-            if (File::exists($file)) {
-                unlink($file);
-            }
         }
 
         $post->save();
 
-        // Session::flash('success', 'Post updated.');
+        if ($post->save()) {
+            toastr()->success('!! Artikel berhasil diedit !!');
 
-        return redirect()->route('posts.edit', $id)->with('success', 'Post updated');;
+            return redirect()->route('posts.index', $post->id);
+        }else{
+            toastr()->error('Terjadi kesalahan pada internet, coba sekali lagi.');
+            return back();
+        }
+
+        // return redirect()->route('posts.edit', $id)->with('success', 'Post updated');
     }
 
     /**
@@ -189,14 +198,62 @@ class PostsController extends Controller
      */
     public function destroy($id)
     {
-        // Retrieve records and throw an exception if a model is not found
         $post = Post::findOrFail( $id );
 
-        // https://laravel.com/docs/5.4/queries#deletes
-        $post->delete();
+        // $post->delete();
 
-        Session::flash('error', 'Post deleted');
+        // Session::flash('warning', 'Post deleted');
 
-        return redirect()->route('posts.index');
+        // return redirect()->route('posts.index');
+
+        if ($post->delete()) {
+            toastr()->info('!! Artikel berhasil dihapus !!');
+
+            return redirect()->route('posts.index', $post->id);
+        }else{
+            toastr()->error('Terjadi kesalahan pada internet, coba sekali lagi.');
+            return back();
+        }
+    }
+
+    public function trash()
+    {
+        $postsTrash = Post::onlyTrashed()->orderBy('updated_at','desc')->paginate(10);
+        $posts = Post::get();
+        // $trash = DB::table('posts')
+        //             ->whereNotNull('deleted_at')
+        //             ->paginate(10);
+
+        return view('admin.posts.trash', compact('postsTrash','posts'));
+    }
+
+    public function restore($id)
+    {
+        $postsTrash = Post::onlyTrashed()->findOrFail($id);
+        $posts = Post::paginate(10);
+
+        if ($postsTrash->restore()) {
+            toastr()->info('!! Artikel berhasil direstore !!');
+
+            // return redirect()->route('posts.trash');
+            return back();
+        }else{
+            toastr()->error('Terjadi kesalahan pada internet, coba sekali lagi.');
+            return back();
+        }
+        // return $trash;
+    }
+
+    public function forceDelete($id)
+    {
+        $postsTrash = Post::onlyTrashed()->where('id', $id);
+        // dd($postsTrash);
+        if ($postsTrash->forceDelete()) {
+            toastr()->warning('Artikel berhasil dihapus secara permanen');
+            return back();
+        }else{
+            toastr()->error('Terjadi kesalahan pada internet, coba sekali lagi.');
+            return back();
+        }
     }
 }
