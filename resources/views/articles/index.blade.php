@@ -47,7 +47,7 @@
                             <hr style="background: #4caf50;">
                             <a href="/diseases/{{ $post->category_slug}}/{{ $post->post_slug }}"><h4 class="mb-4"><strong>{{ $post->post_title }}</strong></h4></a>
 
-                            {!! Helper::words($post->post_content, 70,'....')  !!}
+                            {!! Helper::words($post->post_content, 70,'... ')  !!}
                             <br>
                             <p class="deep-orange-text">update by <a><strong>
                                 {{ Helper::get_userinfo( $post->author_ID )->name }}</strong></a>, {{ date('M j, Y', strtotime( $post->updated_at )) }}

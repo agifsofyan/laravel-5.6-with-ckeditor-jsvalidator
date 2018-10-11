@@ -1,9 +1,9 @@
-<style type="text/css">/* Chart.js */
+<style>
     @-webkit-keyframes chartjs-render-animation{from{opacity:0.99}to{opacity:1}}@keyframes chartjs-render-animation{from{opacity:0.99}to{opacity:1}}.chartjs-render-monitor{-webkit-animation:chartjs-render-animation 0.001s;animation:chartjs-render-animation 0.001s;}
 </style>
 
     <!--Double navigation-->
-    <header>
+    {{-- <header> --}}
         <!-- Sidebar navigation -->
         <div id="slide-out" class="side-nav fixed mdb-sidenav">
             <div>
@@ -11,7 +11,7 @@
                     <!-- Logo -->
                     <li>
                         <div class="logo-wrapper waves-light">
-                            <a href="/" class="mt-2"><img src="{{asset('img/logo.png')}}" class="img-fluid flex-center"></a>
+                            <a href="/" class="mt-2"><img src="{{asset('img/logo.png')}}" class="img-fluid flex-center" alt="Klinik Utama Sentosa"></a>
                         </div>
                     </li>
                     <!--/. Logo -->
@@ -54,9 +54,9 @@
         </div>
         <!--/. Sidebar navigation -->
         <!-- Navbar -->
-    </header>
+    {{-- </header> --}}
 
-    <nav class="container-fluid text-center white-text" style="background-color: lightskyblue;;">
+    <nav class="container-fluid text-center white-text" style="background-color: lightskyblue; margin: 0;">
         <div class="row">
             <div class="col-4 top-info">
                 Lokasi: Kelapa Gading timur, Kota Jakarta Utara
@@ -81,21 +81,22 @@
     <div class="container-fluid text-justify" style="background-color: lightskyblue; padding: 30px; border-top: 1px solid white; border-bottom: 1px solid white;">
         <div class="row">
             <div class="col-6 text-left">
-                <a href="/" class="text-center"><img src="{{ asset('img/logo.png') }}" class="img-fluid"></a>
+                <a href="/" class="text-center"><img src="{{ asset('img/logo.png') }}" class="img-fluid" alt="Klinik Utama Sentosa"></a>
             </div>
             <div class="col-6 text-right">
-                <a href="#" class="text-center"><img src="{{ asset('img/reservasi-hoverl.png') }}" class="img-fluid"></a>
+                <a href="#" class="text-center"><img src="{{ asset('img/reservasi-hoverl.png') }}" class="img-fluid" alt="Klinik Utama Sentosa"></a>
             </div>
         </div>
     </div>
 
+<nav>
     <!--Navbar-->
-    <nav id="navbar" class="navbar navbar-toggleable-md navbar-expand-lg scrolling-navbar double-nav navbar-expand-lg navbar-dark mb-1 info-color fix-nav pl-3">
+    <ul id="navbar" class="navbar navbar-toggleable-md navbar-expand-lg scrolling-navbar double-nav navbar-expand-lg navbar-dark mb-1 info-color fix-nav pl-3" style="padding: 10px;">
         {{-- <div class="float-left">
             <a href="#" data-activates="slide-out" class="button-collapse"><i class="fa fa-bars"></i></a>
         </div> --}}
 
-        <li class="nav-item waves-effect home"><a href="/" class=" nav-link {{ null == Request::query() ? 'active' : '' }}">| <i class="fa fa-home fa-2x" aria-hidden="true"></i> | </a>
+        <li class="nav-item waves-effect home"><a href="/" class=" nav-link {{ null == Request::query() ? 'active' : '' }}"><i class="fa fa-home fa-2x" aria-hidden="true"></i></a>
             <figcaption></figcaption>
         </li>
         <li class="nav-item waves-effect button-collapse" data-activates="slide-out" style="list-style: none;"><a href="#" class="nav-link">Diseases</a></li>
@@ -111,7 +112,8 @@
                 {{--  <a style="border: 1px solid white; padding: 1px 4px; border-radius: 5px;"><i class="fa fa-search white-text" aria-hidden="true"></i></a>  --}}
                 {{-- <button type="submit" class="btn btn-info btn-sm">Search</button> --}}
         </form>
-    </nav>
+    </ul>
+</nav>
     <!--/.Navbar-->
 
 <script>

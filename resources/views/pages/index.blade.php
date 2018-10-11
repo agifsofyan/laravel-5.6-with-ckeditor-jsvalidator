@@ -72,7 +72,7 @@
                             <div class="ca-conten">
                                 <h4 class="h4-responsive font-weight-bold ca-main"><strong>Reservasi Online</strong></h4>
                                 {{-- <a href="/chat" style="border: 1px solid cornflowerblue; padding: 5px; border-radius:  5px;">Daftarkan</a> --}}
-                                <button onclick="myChat()" type="button" class="btn btn-outline-info btn-sm waves-effect">Info</button>
+                                <button onclick="myChat()" class="btn btn-outline-info btn-sm waves-effect">Info</button>
                                 <p class="text-fluid ca-sub">Setelah reservasi terkirim kami akan menghubungi anda dalam waktu 1x24 jam</p>
                             </div>
                         </a>
@@ -87,8 +87,8 @@
                                 <i class="fa fa-phone-square fa-2x" style="color: lightskyblue" aria-hidden="true"></i>
                                 <p class="text-fluid orange-text ca-sub">081362621616</p>
                                 <p class="text-fluid ca-sub">Jika ada keluhan silahkan hubungi kami</p>
-                                </a>
                             </div>
+                        </a>
                     </li>
                 </ul>
             </div>

@@ -238,15 +238,25 @@ class Helper
 
     public static function getArticleList(){
 
-        $category_slug = Request::segment(2);
+        // if( empty( $id ) )
+        //     return;
 
-        $posts = DB::table('categories')
+        $cat_segment  = \Request::segment(2);
+        $post_segment = \Request::segment(3);
+
+        $artList = DB::table('categories')
                     ->join('posts', 'categories.id', '=', 'posts.category_ID')
-                    ->where('category_slug', $category_slug)
+                    ->where('category_slug', '=', $cat_segment)
+                    ->where('post_slug', '!=', $post_segment)
+                    ->where('posts.deleted_at', '=', null)
                     ->select('categories.*', 'posts.*')
-                    ->paginate(10);
+                    ->get();
+                    // ->paginate(10);
 
-        return $posts;
+        if( $artList )
+            return $artList;
+
+        return false;
     }
 
     // public static function getArticleList(){

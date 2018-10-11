@@ -1,3 +1,25 @@
+html {
+font-size: 1rem;
+}
+
+@include media-breakpoint-up(sm) {
+    html {
+    font-size: 1.2rem;
+    }
+}
+
+@include media-breakpoint-up(md) {
+    html {
+    font-size: 1.4rem;
+    }
+}
+
+@include media-breakpoint-up(lg) {
+    html {
+    font-size: 1.6rem;
+    }
+}
+
 .bord {
     border: 1px solid white !important;
 }
@@ -98,6 +120,7 @@ li.home {
     list-style: none;
     border: 2px outset rgba(224, 223, 219, 1);
     border-radius: 30px;
+    margin-left: 40px;
 }
 
 li a {
@@ -119,6 +142,8 @@ li.home a i {
 
 li.home a {
     color: white;
+    margin: 0 !important;
+    padding: 0 !important;
 }
 
 li.home figcaption::before {
@@ -150,21 +175,9 @@ li.home:hover figcaption::before {
     transform: scale3d(1.9, 1.4, 1) rotate3d(0, 0, 1, 45deg) translate3d(0, 100%, 0);
 }
 
-@include media-breakpoint-up(sm) {
-    html {
-        font-size: 16px;
-    }
-}
-
-@include media-breakpoint-up(md) {
-    html {
-        font-size: 20px;
-    }
-}
-
-@include media-breakpoint-up(lg) {
-    html {
-        font-size: 28px;
+@media only screen and (max-width: 800px) {
+    li.home {
+        margin-left: 0 !important;
     }
 }
 

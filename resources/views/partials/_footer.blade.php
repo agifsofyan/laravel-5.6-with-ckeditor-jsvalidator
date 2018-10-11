@@ -22,7 +22,7 @@
         <!-- Grid column -->
         <div class="col-4 mt-3">
             <div class="text-center">
-                <img src="{{asset('img/Logo-sentosa-footer.png')}}" class="img-fluid">
+                <img src="{{asset('img/Logo-sentosa-footer.png')}}" class="img-fluid" alt="Klinik Utama Sentosa">
             </div>
         </div>
         <!-- Grid column -->
