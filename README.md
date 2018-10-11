@@ -15,6 +15,7 @@ Installation Instructions
 1. Unisharp File Manager and CKeditor
 
     a. In terminal run: composer require unisharp/laravel-filemanager:~1.8
+    
     b. Register the package with laravel in config/app.php under providers and aliases with the following:
 
         'providers' => [
