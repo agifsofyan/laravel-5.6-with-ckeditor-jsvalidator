@@ -17,7 +17,7 @@ Installation Instructions
     a. In terminal run: composer require unisharp/laravel-filemanager:~1.8
     
     b. Register the package with laravel in config/app.php under providers and aliases with the following:
-
+    ```laravel
         'providers' => [
         ...
             Unisharp\Laravelfilemanager\LaravelFilemanagerServiceProvider::class,
@@ -28,14 +28,14 @@ Installation Instructions
         ...
             'Image' => Intervention\Image\Facades\Image::class,
         ];
-
+    ```
     c. download and install ckeditor plugin from the [official website](https://ckeditor.com/ckeditor-4/download) and follow        the installation instructions
 
 
 2. jsValidator
     a. In terminal run: composer require proengsoft/laravel-jsvalidation:^2.0
     b. Register the package with laravel in config/app.php under providers and aliases with the following:
-
+    ```laravel
         'providers' => [
         ...
             Proengsoft\JsValidation\JsValidationServiceProvider::class,
@@ -45,7 +45,7 @@ Installation Instructions
         ...
             'JsValidator' => Proengsoft\JsValidation\Facades\JsValidatorFacade::class,
         ];
-
+    ```
 3. Publish all configurations that have been installed
 
 Enjoy ;)
