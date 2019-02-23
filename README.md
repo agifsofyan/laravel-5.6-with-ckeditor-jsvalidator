@@ -1,4 +1,4 @@
-# laravel-5.6-with-ckeditor-jsvalidator
+#laravel-5.6-with-ckeditor-jsvalidator
 
 #About
 The Laravel Framework for building a clinic website that deals with skin and genital diseases.
