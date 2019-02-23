@@ -1,16 +1,16 @@
-#laravel-5.6-with-ckeditor-jsvalidator
+# laravel-5.6-with-ckeditor-jsvalidator
 
-#About
+## About
 The Laravel Framework for building a clinic website that deals with skin and genital diseases.
 
 
-#Requirements
+## Requirements
 Laravel 5.6+
 MySQL 5.6+ if using InnoDB
 Installation Instructions
 
 
-#Install the required packages
+## Install the required packages
 
 1. Unisharp File Manager and CKeditor
 
