@@ -23,10 +23,10 @@
     <div class="container-fluid text-justify" style="background-color: lightskyblue; padding: 30px; border-top: 1px solid white; border-bottom: 1px solid white;">
         <div class="row">
             <div class="col-6 text-left">
-                <a href="/" class="text-center"><img src="{{ asset('img/logo.png') }}" class="img-fluid"></a>
+                <a href="/" class="text-center"><img src="{{ asset('img/logo.png') }}" class="img-fluid" alt="Home Klinik Utama Sentosa"></a>
             </div>
             <div class="col-6 text-right">
-                <a href="#" class="text-center"><img src="{{ asset('img/reservasi-hoverl.png') }}" class="img-fluid"></a>
+                <a href="#" class="text-center"><img src="{{ asset('img/reservasi-hoverl.png') }}" class="img-fluid" alt="Reservasi Klinik Utama Sentosa"></a>
             </div>
         </div>
     </div>

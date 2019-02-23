@@ -4,7 +4,7 @@
 
     @include('alert.flash-message')
 
-    <link href="{{ asset('css/hover-button.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/hover-button.min.css') }}" rel="stylesheet">
 
     {{--  <main class="white">  --}}
         <!-- carousel -->
@@ -71,7 +71,6 @@
                             <hr style="background-color: lightskyblue; height: 3px;">
                             <div class="ca-conten">
                                 <h4 class="h4-responsive font-weight-bold ca-main"><strong>Reservasi Online</strong></h4>
-                                {{-- <a href="/chat" style="border: 1px solid cornflowerblue; padding: 5px; border-radius:  5px;">Daftarkan</a> --}}
                                 <button onclick="myChat()" class="btn btn-outline-info btn-sm waves-effect">Info</button>
                                 <p class="text-fluid ca-sub">Setelah reservasi terkirim kami akan menghubungi anda dalam waktu 1x24 jam</p>
                             </div>
@@ -115,7 +114,7 @@
                             @endforeach
                         @endif
                     </div>
-                    {{-- <div class="col-4 unlist text-center" style="background: #54b0d5; background-image: url('/img/consultation.png'); background-repeat: no-repeat; background-size: 150%; background-position: center; cursor: pointer;" onclick="myChat()"> --}}
+
                     <div class="col-4 unlist text-center" style="background: #54b0d5;">
                         <a href="/chat"><img style="margin-top: 20px;" src="{{asset('img/Konsultasi-online-side.png')}}" alt="Klinik Sentosa" class="img-fluid"></a><br><br>
                         <a href="/chat"><img src="{{asset('img/ink.png')}}" alt="Klinik Sentosa" class="img-fluid"></a>
@@ -124,205 +123,6 @@
                     </div>
             </div>
         </div>
-
-        {{-- <br><br> --}}
-
-        {{-- <div class="panel" style="background-color: gold; height: 40px; padding-left: 20px;">
-            <h4 class="font-weight-bold h5-responsive" style="line-height: 40px;">TESTIMONIALS</h4>
-        </div>
-
-        <br><br>
-
-        <section>
-        <div id="multi-item-example" class="carousel slide carousel-multi-item multi-item-example" data-ride="carousel">
-            <ol class="carousel-indicators carousel-indicators-2">
-                <li style="opacity: 0.3; filter: alpha(opacity=40);" data-target="#multi-item-example" data-slide-to="0"></li>
-                <li style="opacity: 0.3; filter: alpha(opacity=40);" data-target="#multi-item-example" data-slide-to="1" class="active"></li>
-                <li style="opacity: 0.3; filter: alpha(opacity=40);" data-target="#multi-item-example" data-slide-to="2"></li>
-            </ol>
-            <div class="carousel-inner" role="listbox">
-                <div class="carousel-item">
-                    <div class="row">
-                        <div class="col-6">
-                            <div class="z-depth-1" style="border: 1px solid lightskyblue; margin-left: 25px; border-radius: 10px; margin-bottom: 20px;">
-                                <div class="card-header white-text" style="background-color: lightskyblue; border-top-left-radius: 10px; border-top-right-radius: 10px;">
-                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima, nam officia ut modi distinctio, tempore repellat quibusdam perspiciatis laboriosam voluptas quaerat quasi asperiores, natus eaque aut adipisci quas fuga dolor.
-                                </div>
-                                <div class="row" style="margin: 5px;">
-                                    <div class="col-5">
-                                        <div class="text-right">
-                                            <img src="{{asset('img/user-mate.png')}}" class="img-fluid" alt="KLinik Sentosa">
-                                        </div>
-                                    </div>
-
-                                    <div class="col-6 text-left d-flex justify-content-end">
-                                        <table height="100%">
-                                            <tbody>
-                                                <tr>
-                                                    <td class="align-middle">Unknowns</td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="align-middle">28 tahun</td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-6">
-                            <div class="z-depth-1" style="border: 1px solid lightskyblue; margin-right: 25px; border-radius: 10px; margin-bottom: 20px;">
-                                <div class="card-header white-text" style="background-color: lightskyblue; border-top-left-radius: 10px; border-top-right-radius: 10px;">
-                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima, nam officia ut modi distinctio, tempore repellat quibusdam perspiciatis laboriosam voluptas quaerat quasi asperiores, natus eaque aut adipisci quas fuga dolor.
-                                </div>
-                                <div class="row" style="margin: 5px;">
-                                    <div class="col-5">
-                                        <div class="text-right">
-                                            <img src="{{asset('img/user-mate.png')}}" class="img-fluid" alt="KLinik Sentosa">
-                                        </div>
-                                    </div>
-
-                                    <div class="col-6 text-left d-flex justify-content-end">
-                                        <table height="100%">
-                                            <tbody>
-                                                <tr>
-                                                    <td class="align-middle">Unknowns</td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="align-middle">28 tahun</td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="carousel-item active carousel-item-left">
-                     <div class="row">
-                        <div class="col-6">
-                            <div class="z-depth-1" style="border: 1px solid lightskyblue; margin-left: 25px; border-radius: 10px; margin-bottom: 20px;">
-                                <div class="card-header white-text" style="background-color: lightskyblue; border-top-left-radius: 10px; border-top-right-radius: 10px;">
-                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima, nam officia ut modi distinctio, tempore repellat quibusdam perspiciatis laboriosam voluptas quaerat quasi asperiores, natus eaque aut adipisci quas fuga dolor.
-                                </div>
-                                <div class="row" style="margin: 5px;">
-                                    <div class="col-5">
-                                        <div class="text-right">
-                                            <img src="{{asset('img/user-mate.png')}}" class="img-fluid" alt="KLinik Sentosa">
-                                        </div>
-                                    </div>
-
-                                    <div class="col-6 text-left d-flex justify-content-end">
-                                        <table height="100%">
-                                            <tbody>
-                                                <tr>
-                                                    <td class="align-middle">Unknowns</td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="align-middle">28 tahun</td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-6">
-                            <div class="z-depth-1" style="border: 1px solid lightskyblue; margin-right: 25px; border-radius: 10px; margin-bottom: 20px;">
-                                <div class="card-header white-text" style="background-color: lightskyblue; border-top-left-radius: 10px; border-top-right-radius: 10px;">
-                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima, nam officia ut modi distinctio, tempore repellat quibusdam perspiciatis laboriosam voluptas quaerat quasi asperiores, natus eaque aut adipisci quas fuga dolor.
-                                </div>
-                                <div class="row" style="margin: 5px;">
-                                    <div class="col-5">
-                                        <div class="text-right">
-                                            <img src="{{asset('img/user-mate.png')}}" class="img-fluid" alt="KLinik Sentosa">
-                                        </div>
-                                    </div>
-
-                                    <div class="col-6 text-left d-flex justify-content-end">
-                                        <table height="100%">
-                                            <tbody>
-                                                <tr>
-                                                    <td class="align-middle">Unknowns</td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="align-middle">28 tahun</td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="carousel-item carousel-item-next carousel-item-left">
-                     <div class="row">
-                        <div class="col-6">
-                            <div class="z-depth-1" style="border: 1px solid lightskyblue; margin-left: 25px; border-radius: 10px; margin-bottom: 20px;">
-                                <div class="card-header white-text" style="background-color: lightskyblue; border-top-left-radius: 10px; border-top-right-radius: 10px;">
-                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima, nam officia ut modi distinctio, tempore repellat quibusdam perspiciatis laboriosam voluptas quaerat quasi asperiores, natus eaque aut adipisci quas fuga dolor.
-                                </div>
-                                <div class="row" style="margin: 5px;">
-                                    <div class="col-5">
-                                        <div class="text-right">
-                                            <img src="{{asset('img/user-mate.png')}}" class="img-fluid" alt="KLinik Sentosa">
-                                        </div>
-                                    </div>
-
-                                    <div class="col-6 text-left d-flex justify-content-end">
-                                        <table height="100%">
-                                            <tbody>
-                                                <tr>
-                                                    <td class="align-middle">Unknowns</td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="align-middle">28 tahun</td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-6">
-                            <div class="z-depth-1" style="border: 1px solid lightskyblue; margin-right: 25px; border-radius: 10px; margin-bottom: 20px;">
-                                <div class="card-header white-text" style="background-color: lightskyblue; border-top-left-radius: 10px; border-top-right-radius: 10px;">
-                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima, nam officia ut modi distinctio, tempore repellat quibusdam perspiciatis laboriosam voluptas quaerat quasi asperiores, natus eaque aut adipisci quas fuga dolor.
-                                </div>
-                                <div class="row" style="margin: 5px;">
-                                    <div class="col-5">
-                                        <div class="text-right">
-                                            <img src="{{asset('img/user-mate.png')}}" class="img-fluid" alt="KLinik Sentosa">
-                                        </div>
-                                    </div>
-
-                                    <div class="col-6 text-left d-flex justify-content-end">
-                                        <table height="100%">
-                                            <tbody>
-                                                <tr>
-                                                    <td class="align-middle">Unknowns</td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="align-middle">28 tahun</td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        </section> --}}
 
         <div style="margin-top: 30px">
             <a href="/chat"><img src="{{asset('img/Bottom-banner.jpg')}}" class="img-fluid" alt="Klinik Sentosa" style="width: 100%;"></a>
@@ -428,102 +228,10 @@
         <div class="container">
             <br><br>
             <section class="frame-maps" style="border: 1px solid silver">
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3966.766451526646!2d106.90551151439153!3d-6.1620250955386995!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69f5323f16d2f3%3A0xe3d634daa6179698!2sKlinik+Utama+Sentosa!5e0!3m2!1sid!2sid!4v1521260716565" height="451" frameborder="0" style="width: 100% !important;" allowfullscreen></iframe>
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3966.7530835854645!2d106.90888801435004!3d-6.1638132621236705!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69f52d5c6c86d5%3A0x861675efeba74231!2sKlinik+Sentosa!5e0!3m2!1sid!2sid!4v1545964332809" height="451" frameborder="0" style="width: 100% !important;" allowfullscreen></iframe>
             </section>
         </div>
         <br><br>
     {{--  </main>  --}}
-
-<!-- Sidebar navigation -->
-<div id="slide-out" class="side-nav fixed">
-  <ul class="custom-scrollbar">
-      <!-- Logo -->
-      <li>
-          <div class="logo-wrapper waves-light">
-              <a href="#"><img src="{{ asset('img/logo.png') }}" class="img-fluid flex-center"></a>
-          </div>
-      </li>
-      <!--/. Logo -->
-      <!--Social-->
-      <li>
-          <ul class="social">
-              <li><a href="#" class="icons-sm fb-ic"><i class="fa fa-facebook"> </i></a></li>
-              <li><a href="#" class="icons-sm pin-ic"><i class="fa fa-pinterest"> </i></a></li>
-              <li><a href="#" class="icons-sm gplus-ic"><i class="fa fa-google-plus"> </i></a></li>
-              <li><a href="#" class="icons-sm tw-ic"><i class="fa fa-twitter"> </i></a></li>
-          </ul>
-      </li>
-      <!--/Social-->
-      <!--Search Form-->
-      <li>
-          <form class="search-form" role="search">
-              <div class="form-group md-form mt-0 pt-1 waves-light">
-                  <input type="text" class="form-control" placeholder="Search">
-              </div>
-          </form>
-      </li>
-      <!--/.Search Form-->
-      <!-- Side navigation links -->
-      <li>
-          <ul class="collapsible collapsible-accordion">
-              <li><a class="collapsible-header waves-effect arrow-r"><i class="fa fa-chevron-right"></i> Submit blog<i class="fa fa-angle-down rotate-icon"></i></a>
-                  <div class="collapsible-body">
-                      <ul>
-                          <li><a href="#" class="waves-effect">Submit listing</a>
-                          </li>
-                          <li><a href="#" class="waves-effect">Registration form</a>
-                          </li>
-                      </ul>
-                  </div>
-              </li>
-              <li><a class="collapsible-header waves-effect arrow-r"><i class="fa fa-hand-pointer-o"></i> Instruction<i class="fa fa-angle-down rotate-icon"></i></a>
-                  <div class="collapsible-body">
-                      <ul>
-                          <li><a href="#" class="waves-effect">For bloggers</a>
-                          </li>
-                          <li><a href="#" class="waves-effect">For authors</a>
-                          </li>
-                      </ul>
-                  </div>
-              </li>
-              <li><a class="collapsible-header waves-effect arrow-r"><i class="fa fa-eye"></i> About<i class="fa fa-angle-down rotate-icon"></i></a>
-                  <div class="collapsible-body">
-                      <ul>
-                          <li><a href="#" class="waves-effect">Introduction</a>
-                          </li>
-                          <li><a href="#" class="waves-effect">Monthly meetings</a>
-                          </li>
-                      </ul>
-                  </div>
-              </li>
-              <li><a class="collapsible-header waves-effect arrow-r"><i class="fa fa-envelope-o"></i> Contact me<i class="fa fa-angle-down rotate-icon"></i></a>
-                  <div class="collapsible-body">
-                      <ul>
-                          <li><a href="#" class="waves-effect">FAQ</a>
-                          </li>
-                          <li><a href="#" class="waves-effect">Write a message</a>
-                          </li>
-                          <li><a href="#" class="waves-effect">FAQ</a>
-                          </li>
-                          <li><a href="#" class="waves-effect">Write a message</a>
-                          </li>
-                          <li><a href="#" class="waves-effect">FAQ</a>
-                          </li>
-                          <li><a href="#" class="waves-effect">Write a message</a>
-                          </li>
-                          <li><a href="#" class="waves-effect">FAQ</a>
-                          </li>
-                          <li><a href="#" class="waves-effect">Write a message</a>
-                          </li>
-                      </ul>
-                  </div>
-              </li>
-          </ul>
-      </li>
-      <!--/. Side navigation links -->
-  </ul>
-  <div class="sidenav-bg rgba-blue-strong"></div>
-</div>
-<!--/. Sidebar navigation -->
 
     @stop

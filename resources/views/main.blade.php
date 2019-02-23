@@ -2,31 +2,31 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="yandex-verification" content="49b5797fc36c6ef5" />
+    <meta name="msvalidate.01" content="6B415FEB929F6FF40BA419BD8A8B33A0" />
     <title>{{ config('app.name') }} @yield('title')</title>
     <link rel="icon" type="image/png" href="{{ asset('img/favicon.png') }}">
-
-    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <!-- Bootstrap core CSS --></#comment>
-    <link href="{{asset('css/bootstrap.min.css')}}" rel="stylesheet">
-    <!-- Material Design Bootstrap -->
-    <link href="{{asset('css/mdb.min.css')}}" rel="stylesheet">
-    {{-- Toast --}}
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet">
+    <!-- <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.5.12/css/mdb.min.css" rel="stylesheet"> -->
+    <link href="{{asset('css/custom-mdb.min.css')}}" rel="stylesheet">
     @toastr_css
-    <!-- Custom -->
     <link href="{{ asset('css/style.min.css') }}" rel="stylesheet">
-    {{-- analytic google --}}
+    
     <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-123742553-1"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-127396657-1"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
 
-      gtag('config', 'UA-123742553-1');
+      gtag('config', 'UA-127396657-1');
     </script>
+
 </head>
 {{-- <body style="left: 0; right: 0; margin-bottom: 20%; padding: 0; background-color: #54b0d5;"> --}}
 <body style="left: 0; right: 0; padding: 0; background-color: #54b0d5;">
@@ -39,25 +39,22 @@
     @yield('content')
 </main>
 
-<footer class="page-footer font-small pt-4" style="background-color: #54b0d5;">
+<footer class="page-footer font-small pt-4" style="background-color: #54b0d5; margin-bottom: -21px !important;">
     @include('partials._footer')
 </footer>
 
-<!-- SCRIPTS -->
-<!-- JQuery -->
-<script type="text/javascript" src="{{asset('js/jquery-3.3.1.min.js')}}"></script>
-<!-- Bootstrap tooltips -->
-<script type="text/javascript" src="{{asset('js/popper.min.js')}}"></script>
-<!-- Bootstrap core JavaScript -->
-<script type="text/javascript" src="{{asset('js/bootstrap.min.js')}}"></script>
-<!-- MDB core JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/js/bootstrap.min.js"></script>
+<!-- <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.5.12/js/mdb.min.js"></script> -->
+
 <script type="text/javascript" src="{{asset('js/mdb.min.js')}}"></script>
-{{-- Toast --}}
 @toastr_js
 @toastr_render
 
 <!-- Laravel Javascript Validation -->
-<script type="text/javascript" src="{{ asset('vendor/jsvalidation/js/jsvalidation.js')}}"></script>
+<script type="text/javascript" src="{{ asset('vendor/jsvalidation/js/jsvalidation.min.js')}}"></script>
 
 {!! JsValidator::formRequest('App\Http\Requests\SiteRequest', '#save-user') !!}
 
@@ -109,9 +106,7 @@
 </script>
 
 <script>
-    // SideNav Button Initialization
     $(".button-collapse").sideNav();
-    // SideNav Scrollbar Initialization
     var sideNavScrollbar = document.querySelector('.custom-scrollbar');
     Ps.initialize(sideNavScrollbar);
 </script>
@@ -121,6 +116,9 @@
         $('[data-toggle="tooltip"]').tooltip();
     });
 </script>
+
+<script async src="https://static.addtoany.com/menu/page.js"></script>
+<!-- AddToAny END -->
 
 </body>
 </html>

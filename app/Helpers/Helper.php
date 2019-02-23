@@ -140,7 +140,11 @@ class Helper
 
         // $categories = Category::get();
 
-        $categories = DB::table('categories')->skip(0)->take(6)->get();
+        $categories = DB::table('categories')
+        	->orderby('category_name','asc')
+        	->skip(0)
+        	->take(8)
+        	->get();
 
         if( $categories )
             return $categories;
@@ -152,7 +156,11 @@ class Helper
 
         // $categories = Category::get();
 
-        $categories = DB::table('categories')->skip(6)->take(6)->get();
+        $categories = DB::table('categories')
+        	->orderby('category_name','asc')
+        	->skip(8)
+        	->take(20)
+        	->get();
 
         if( $categories )
             return $categories;
@@ -162,7 +170,9 @@ class Helper
 
     public static function get_categories() {
 
-        $categories = DB::table('categories')->get();
+        $categories = DB::table('categories')
+        	->where('categories.deleted_at', '=', null)
+        	->get();
 
         if( $categories )
             return $categories;

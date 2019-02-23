@@ -1,6 +1,9 @@
 <!doctype html>
 <html lang="{{ config('app.locale') }}">
 <head>
+    <meta name="robots" content="noindex" />
+    <meta name="googlebot" content="noindex">
+    <meta name="googlebot-news" content="nosnippet">
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -15,14 +18,14 @@
     <!-- Bootstrap core CSS -->
     <link href="{{asset('css/bootstrap.min.css')}}" rel="stylesheet">
     <!-- Material Design Bootstrap -->
-    <link href="{{asset('css/mdb.min.css')}}" rel="stylesheet">
-    <link rel="stylesheet" href="{{ asset('css/datatable/datatable.min.css') }}">
+    <link href="{{asset('css/custom-mdb.min.css')}}" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('css/datatables/datatable.min.css') }}">
     {{--  CK Editor  --}}
     <link href="{{ asset('ckeditor/plugins/codesnippet/lib/highlight/styles/default.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/sweetalert2/0.4.5/sweetalert2.css">
     {{-- Toast --}}
     @toastr_css
-    <link rel="stylesheet" href="{{asset('css/admin.css')}}">
+    <link rel="stylesheet" href="{{asset('css/admin.min.css')}}">
 </head>
 <body>
 

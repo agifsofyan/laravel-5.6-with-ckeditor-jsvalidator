@@ -34,7 +34,7 @@
         <div class="col-4 mt-3 text-right">
             <h6 class="text-uppercase mb-4 font-weight-bold">Alamat</h6>
             <hr class="white">
-            <p>Ruko Graha Boulevord Blok ND 1 No. 53, Jl. Boulvord Timur, Kelapa Gading Timur</p>
+            <p>Ruko Graha Boulevord Blok ND 1 No. 53, Jl. Boulevord Timur, Kelapa Gading Timur</p>
             <p>Jam Operasional <br> 09.00 - 21.00 WIB</p>
             <p>Hubungi Kami: <br> 081362621616</p>
             <!-- <p><i class="fa fa-home mr-3"></i> New York, NY 10012, US</p>
@@ -49,7 +49,7 @@
 </div>
 
 <!-- Footer Links -->
-<div class="container-fluid" style="background-color: gold;">
+<div class="container-fluid" style="background-color: gold; margin-bottom: 0 !important;">
     <div class="row d-flex align-items-center">
         <!-- Grid column -->
         <div class="col-md-12 col-lg-12 col-xs-12">
@@ -77,7 +77,15 @@
         <div class="col-md-12 col-lg-12 col-xs-12">
 
             <!--Copyright-->
-            <p class="black-text text-center">Copyright © 2018 <strong><a href="#" class="black-text">Klini Utama Sentosa</a> All Rights Reserved</strong></a></p>
+            <p class="black-text text-center">
+            	Copyright © 2018 
+            	<strong>
+            		<a href="#" class="black-text">
+            			Klinik Utama Sentosa
+            		</a> 
+            		All Rights Reserved
+            	</strong>
+            </p>
 
         </div>
         <!-- Grid column -->

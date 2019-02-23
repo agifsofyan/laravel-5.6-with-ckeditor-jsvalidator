@@ -1,4 +1,4 @@
-<script type="text/javascript" src="{{ asset('vendor/jsvalidation/js/jsvalidation.js')}}"></script>
+<script type="text/javascript" src="{{ asset('vendor/jsvalidation/js/jsvalidation.min.js')}}"></script>
 {{-- Post --}}
 {!! JsValidator::formRequest('App\Http\Requests\PostRequest', '#save-post') !!}
 {!! JsValidator::formRequest('App\Http\Requests\PostUdateRequest', '#save-Upost') !!}
