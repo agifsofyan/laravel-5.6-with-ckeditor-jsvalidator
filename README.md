@@ -17,7 +17,7 @@ Installation Instructions
     a. In terminal run: composer require unisharp/laravel-filemanager:~1.8
     
     b. Register the package with laravel in config/app.php under providers and aliases with the following:
-    ```laravel
+    ```php
         'providers' => [
         ...
             Unisharp\Laravelfilemanager\LaravelFilemanagerServiceProvider::class,
@@ -35,7 +35,7 @@ Installation Instructions
 2. jsValidator
     a. In terminal run: composer require proengsoft/laravel-jsvalidation:^2.0
     b. Register the package with laravel in config/app.php under providers and aliases with the following:
-    ```laravel
+    ```php
         'providers' => [
         ...
             Proengsoft\JsValidation\JsValidationServiceProvider::class,
