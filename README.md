@@ -29,7 +29,7 @@ Installation Instructions
             'Image' => Intervention\Image\Facades\Image::class,
         ];
 
-    c. download and install ckeditor plugin from the official website : https://ckeditor.com/ckeditor-4/download/ and follow        the installation instructions
+    c. download and install ckeditor plugin from the [official website](https://ckeditor.com/ckeditor-4/download) and follow        the installation instructions
 
 
 2. jsValidator
